@@ -32,7 +32,7 @@ class Inkblot_Walker_Nav_Dropdown extends Walker_Nav_Menu {
 		$classes = implode(' ', apply_filters('nav_menu_css_class', array_filter($classes), $item, $args));
 		
 		$output .= apply_filters('walker_nav_menu_start_el', sprintf('<option value="%s" class="%s" data-target="%s"%s>%s%s%s%s',
-			esc_url($item->url),
+			esc_url($item->url. '?lastpost=' . $_GET['lastpost']),
 			esc_attr($classes),
 			esc_attr($item->target),
 			selected(false !== strpos($classes, 'current-menu-item'), true, false),

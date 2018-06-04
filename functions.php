@@ -19,14 +19,7 @@ require_once get_template_directory() . '/_/php/walker-nav-dropdown.php';
 require_once get_template_directory() . '/_/php/walker-page-dropdown.php';
 
 
-/*
-function custom_query_vars_filter($vars) {
-  $vars[] .= 'lastpost';
-  return $vars;
-}
-add_filter( 'query_vars', 'custom_query_vars_filter' );
-add_query_arg(array('lastpost' => 'first-post'), home_url('/'));
-*/
+
 
 if (is_admin() or is_customize_preview()) {
 	require_once get_template_directory() . '/_/php/admin.php';
@@ -193,7 +186,7 @@ function inkblot_after_setup_theme() {
 		}
 	}
 	
-	add_editor_style(add_query_arg(array('inkblot-mods' => 'editor'), home_url('/')));
+	add_editor_style(add_query_arg(array('inkblot-mods' => 'editor'), home_url('/') . '?lastpost=' . $_GET['lastpost']));
 	
 	add_filter('use_default_gallery_style', '__return_false');
 	add_filter('show_recent_comments_widget_style', '__return_false');

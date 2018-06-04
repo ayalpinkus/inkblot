@@ -11,6 +11,9 @@ Tags: black, blue, brown, gray, green, orange, pink, purple, red, silver, tan, w
 
 The original Webcomic theme.
 
+Additional modifications in this fork of Inkblot were made by Ayal Pinkus and Jason Brubaker. This forked version is designed to act as an archive for use with a comics mailing list: it shows posts from oldest to newest for a better reading experience, and a 'lastpost' query parameter is required, being the name (slug) of the last post to be shown. 
+
+
 == Description ==
 
 Inkblot is an elegant, [fully responsive](https://en.wikipedia.org/wiki/Responsive_web_design), [highly customizable](https://codex.wordpress.org/Appearance_Customize_Screen) [Webcomic](https://github.com/mgsisk/webcomic)-ready [WordPress](https://wordpress.org) theme, named in honor of Rorschach from the Watchmen graphic novel.

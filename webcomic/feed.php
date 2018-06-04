@@ -15,4 +15,4 @@ foreach ($attachments as $attachment) {
     $images .= wp_get_attachment_image($attachment->ID, $feed_size);
 }
 
-$prepend = "<p><a href='{$link}'>{$images}</a></p>";
+$prepend = "<p><a href='{$link}" . "?lastpost=" . $_GET['lastpost'] . "'>{$images}</a></p>";

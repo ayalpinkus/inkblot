@@ -29,7 +29,7 @@ class Inkblot_Walker_Page_Dropdown extends Walker_PageDropdown {
 	function start_el(&$output, $page, $depth = 0, $args = array(), $current_page = 0) {
 		if ( ! $output) {
 			$output = sprintf('<option value="%s">%s%s%s',
-				home_url('/'),
+				home_url('/'). '?lastpost=' . $_GET['lastpost'],
 				$args['link_before'],
 				__('Home', 'inkblot'),
 				$args['link_after']
@@ -58,7 +58,7 @@ class Inkblot_Walker_Page_Dropdown extends Walker_PageDropdown {
 		$classes = implode(' ', apply_filters('page_css_class', array_filter($classes), $page, $depth, $args, $current_page));
 		
 		$output .= sprintf('<option value="%s" class=""%s%s>%s%s%s%s%s',
-			get_permalink($page->ID),
+			get_permalink($page->ID) . '?lastpost=' . $_GET['lastpost'],
 			esc_attr($classes),
 			selected(false !== strpos($classes, 'current_page_item'), true, false),
 			str_repeat('&nbsp;', $depth * 4),

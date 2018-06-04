@@ -39,7 +39,7 @@
 				endif;
 				
 				if (webcomic_prints_available()) :
-					printf('<a href="%1$s">%2$s</a>',
+					printf('<a href="%1$s' . '?lastpost=' . $_GET['lastpost'] . '">%2$s</a>',
 						add_query_arg(array('prints' => ''), get_permalink()),
 						__('Purchase', 'inkblot')
 					);

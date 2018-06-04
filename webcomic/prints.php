@@ -17,7 +17,7 @@ get_header(); ?>
 		
 		<article role="article" id="post-<?php the_ID(); ?>" <?php post_class('webcomic-prints'); ?>>
 			<header class="post-header">
-				<h1><a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></h1>
+				<h1><a href="<?php the_permalink() . '?lastpost=' . $_GET['lastpost'] ; ?>" rel="bookmark"><?php the_title(); ?></a></h1>
 				<div class="post-details">
 					
 					<?php edit_post_link(sprintf(__('Edit %1$s', 'inkblot'), '<span class="screen-reader-text">' . get_the_title() . '</span>')); ?>
