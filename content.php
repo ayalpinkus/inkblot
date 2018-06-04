@@ -24,7 +24,7 @@
 			
 		<?php else : ?>
 			
-			<h2><a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
+			<h2><a href="<?php the_permalink() . '?lastpost=' . $_GET['lastpost'] ; ?>" rel="bookmark"><?php the_title(); ?></a></h2>
 			
 		<?php endif; ?>
 		

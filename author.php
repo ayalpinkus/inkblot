@@ -31,7 +31,11 @@ get_header(); ?>
 		<?php endif; ?>
 		
 		<?php
-			while (have_posts()) : the_post();
+//			while (have_posts()) : the_post();
+
+                        $custom_query = new WP_Query('order=asc'); 
+                        while($custom_query->have_posts()) : $custom_query->the_post();
+
 				(webcomic() and is_a_webcomic())
 				? get_template_part('webcomic/content', get_post_type())
 				: get_template_part('content', get_post_format());

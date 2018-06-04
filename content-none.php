@@ -19,7 +19,7 @@
 		
 		<?php
 			if (is_home() and current_user_can('publish_posts')) :
-				printf('<a href="%s" class="first-post">%s</a>',
+				printf('<a href="%s' . '?lastpost=' . $_GET['lastpost'] . '" class="first-post">%s</a>',
 					admin_url('post-new.php'),
 					__('Publish your first post', 'inkblot')
 				);

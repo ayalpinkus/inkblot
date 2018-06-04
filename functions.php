@@ -18,6 +18,16 @@ require_once get_template_directory() . '/_/php/tags.php';
 require_once get_template_directory() . '/_/php/walker-nav-dropdown.php';
 require_once get_template_directory() . '/_/php/walker-page-dropdown.php';
 
+
+/*
+function custom_query_vars_filter($vars) {
+  $vars[] .= 'lastpost';
+  return $vars;
+}
+add_filter( 'query_vars', 'custom_query_vars_filter' );
+add_query_arg(array('lastpost' => 'first-post'), home_url('/'));
+*/
+
 if (is_admin() or is_customize_preview()) {
 	require_once get_template_directory() . '/_/php/admin.php';
 }
@@ -280,7 +290,7 @@ if ( ! function_exists('inkblot_excerpt_more')) :
  * @return string
  */
 function inkblot_excerpt_more() {
-	return '&#8230; <a href="' . get_permalink() . '" class="more-link">' . sprintf(__('Continue reading %1$s', 'inkblot'), '<span class="screen-reader-text">' . get_the_title() . '</span>') . '</a>';
+	return '&#8230; <a href="' . get_permalink()  . '?lastpost=' . $_GET['lastpost'] . '" class="more-link">' . sprintf(__('Continue reading %1$s', 'inkblot'), '<span class="screen-reader-text">' . get_the_title() . '</span>') . '</a>';
 }
 endif;
 
@@ -291,6 +301,6 @@ if ( ! function_exists('inkblot_the_content_more_link')) :
  * @return string
  */
 function inkblot_the_content_more_link() {
-	return '<a href="' . get_permalink() . '" class="more-link">' . sprintf(__('Continue reading %1$s', 'inkblot'), '<span class="screen-reader-text">' . get_the_title() . '</span>') . '</a>';
+	return '<a href="' . get_permalink() . '?lastpost=' . $_GET['lastpost'] . '" class="more-link">' . sprintf(__('Continue reading %1$s', 'inkblot'), '<span class="screen-reader-text">' . get_the_title() . '</span>') . '</a>';
 }
 endif;
