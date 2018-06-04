@@ -39,13 +39,35 @@
 					
 					<nav role="navigation" aria-label="<?php _e('Primary Navigation', 'inkblot'); ?>">
 						
+
 						<?php
+/*
 							wp_nav_menu(array(
 								'theme_location' => 'primary',
 								'show_home' => true,
 								'container' => false
 							));
-							
+
+*/							
+                                                ?>
+
+
+<div class="menu"><ul>
+						<?php
+
+							wp_list_pages(array(
+								//'container' => false,
+								//'theme_location' => 'primary',
+										'title_li' => '',
+										'walker' => new Inkblot_Walker_Page_Dropdown
+									));
+
+
+                                                ?>
+
+</ul></div>
+
+						<?php
 							if (get_theme_mod('responsive_width', 0) or is_customize_preview()) {
 								if (has_nav_menu('primary')) {
 									wp_nav_menu(array(
@@ -55,9 +77,10 @@
 										'items_wrap' => '<select>%3$s</select>',
 										'walker' => new Inkblot_Walker_Nav_Dropdown
 									));
+
 								} else {
 									print '<select>';
-									
+								
 									wp_list_pages(array(
 										'title_li' => '',
 										'walker' => new Inkblot_Walker_Page_Dropdown

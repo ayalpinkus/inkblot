@@ -28,13 +28,15 @@ class Inkblot_Walker_Page_Dropdown extends Walker_PageDropdown {
 	 */
 	function start_el(&$output, $page, $depth = 0, $args = array(), $current_page = 0) {
 		if ( ! $output) {
-			$output = sprintf('<option value="%s">%s%s%s',
+			$output = sprintf('<li %s><a href="%s">%s%s%s</a></li>',
+				($current_page == 0) ? 'class="current_page_item"' : '',
 				home_url('/'). '?lastpost=' . $_GET['lastpost'],
 				$args['link_before'],
 				__('Home', 'inkblot'),
 				$args['link_after']
 			);
 		}
+
 		
 		$classes = array('page_item', "page-item-{$page->ID}");
 		
@@ -57,9 +59,10 @@ class Inkblot_Walker_Page_Dropdown extends Walker_PageDropdown {
 		$time = empty($args['show_date']) ? '' : mysql2date($args['date_format'], 'modified' === $args['show_date'] ? $page->post_modified : $page->post_date);
 		$classes = implode(' ', apply_filters('page_css_class', array_filter($classes), $page, $depth, $args, $current_page));
 		
-		$output .= sprintf('<option value="%s" class=""%s%s>%s%s%s%s%s',
+		$output .= sprintf('<li %s><a href="%s" class="%s %s">%s%s%s%s%s',
+		        false !== strpos($classes, 'current_page_item') ? 'class="current_page_item"' : '',
 			get_permalink($page->ID) . '?lastpost=' . $_GET['lastpost'],
-			esc_attr($classes),
+ 			esc_attr($classes),
 			selected(false !== strpos($classes, 'current_page_item'), true, false),
 			str_repeat('&nbsp;', $depth * 4),
 			$args['link_before'],
@@ -68,6 +71,7 @@ class Inkblot_Walker_Page_Dropdown extends Walker_PageDropdown {
 			$time
 		);
 	}
+
 	
 	/**
 	 * End element output.
@@ -78,7 +82,7 @@ class Inkblot_Walker_Page_Dropdown extends Walker_PageDropdown {
 	 * @param array $args Arguments passed to the walker.
 	 */
 	function end_el(&$output, $item, $depth = 0, $args = array(), $current_page = 0) {
-		$output .= '</option>';
+		$output .= '</a></li>';
 	}
 }
 endif;
