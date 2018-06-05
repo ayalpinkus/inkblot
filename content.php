@@ -24,7 +24,7 @@
 			
 		<?php else : ?>
 			
-			<h2><a href="<?php the_permalink() . inkblot_default_query_parameters(__FILE__,__LINE__) ; ?>" rel="bookmark"><?php the_title(); ?></a></h2>
+			<h2><a href="<?php echo the_permalink() . inkblot_default_query_parameters(__FILE__,__LINE__) ; ?>" rel="bookmark"><?php the_title(); ?></a></h2>
 			
 		<?php endif; ?>
 		
@@ -68,12 +68,16 @@
 	<?php endif; ?>
 	
 	<footer class="post-footer">
-		
+
+<!--@@@TODO AYAL: this renders the categories. The problem is I don't know how to append '?lastpost=' to the category urls
 		<?php
 			the_terms(get_the_ID(), 'category', sprintf('<span class="post-categories"><span class="screen-reader-text">%s </span>', __('Categories', 'inkblot')), __(', ', 'inkblot'), '</span>');
 			
 			the_tags(sprintf('<span class="post-tags"><span class="screen-reader-text">%s </span>', __('Tags', 'inkblot')), __(', ', 'inkblot'), '</span>');
+
 		?>
+--!>	
+
 		
 	</footer><!-- .post-footer -->
 	

@@ -18,6 +18,8 @@ require_once get_template_directory() . '/_/php/tags.php';
 require_once get_template_directory() . '/_/php/walker-nav-dropdown.php';
 require_once get_template_directory() . '/_/php/walker-page-dropdown.php';
 
+//@@@TODO couldn't get it to work...
+//require_once get_template_directory() . '/_/php/walker-category.php';
 
 
 
@@ -298,12 +300,39 @@ function inkblot_the_content_more_link() {
 }
 endif;
 
-if ( ! function_exists('inkblot_default_query_parameters')) :
-function inkblot_default_query_parameters($file,$line) {
-  return '?lastpost=' . $_GET['lastpost'] ; // . '&pos=' . $file . '_' . $line;
+
+
+
+if ( ! function_exists('inkblot_renderall')) :
+function inkblot_renderall() {
+  $renderall = false;
+  if( current_user_can('administrator')) {
+    $renderall = true;
+    echo "<div style='display:block; clear:both; background:#f8f8f8; min-height:1in; font-size:24pt; padding-bottom:0.25in; padding-top:0.25in;'><b>NOTE:</b> you are logged in as administrator of this site, and the administrator can see all posts. You you may see something that is different from what regular visitors see.<hr></div><p style='clear:both;'>";
+  }
+  return $renderall;
 }
 endif;
 
 
 
 
+
+
+
+
+
+
+
+if ( ! function_exists('inkblot_welcome_to_archive')) :
+function inkblot_welcome_to_archive() {
+  $lastpost = $_GET[lastpost];
+  if ( $lastpost == "") {
+    echo "<h1>Congratulations!</h1>You have come to the right place!<p>This is the archive for the @@@ comic. Please visit @@@Site Here@@@ to subscribe to my newsletter. I will send out a new episode for my webcomic every @@@, and as soon as you receive your first newsletter, you can read the episodes from the start on this website.</p>";
+  }
+  else
+  {
+    echo "<p style='font-size:36pt;'>Sorry, the post you are looking for was not found...</p>";
+  }
+}
+endif;

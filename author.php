@@ -12,11 +12,15 @@ get_header(); ?>
 
 <main role="main">
 
+
+        <?php $renderall = inkblot_renderall(); ?>
+
 	<?php if (have_posts()) : ?>
 
 		<header class="page-header">
 			<h1><?php printf(__('<span class="screen-reader-text">%s </span>%s'), __('Posts authored by', 'inkblot'), apply_filters('the_author', get_the_author_meta('display_name'))); ?></h1>
 		</header><!-- .page-header -->
+
 		
 		<?php if (get_avatar(get_the_author_meta('user_email'))) : ?>
 			
@@ -32,9 +36,6 @@ get_header(); ?>
 		
 		<?php
 
-
-
-$renderall = false;
 
 $lastpost = $_GET['lastpost'];
 
@@ -53,13 +54,7 @@ if ( $lastpost != "") {
 
 
 if ( is_null( $found_post ) && ! $renderall ){
-  if ( $lastpost == "") {
-    echo "<h1>Congratulations!</h1>You have come to the right place!<p>This is the archive for the @@@ comic. Please visit @@@Site Here@@@ to subscribe to my newsletter. I will send out a new episode for my webcomic every @@@, and as soon as you receive your first newsletter, you can read the episodes from the start on this website.</p>";
-  }
-  else
-  {
-    echo "<p style='font-size:36pt;'>Sorry, the post you are looking for was not found...</p>";
-  }
+  inkblot_welcome_to_archive();
 }
 else
 {

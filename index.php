@@ -22,13 +22,15 @@ The following modifications require the viewr to pass ?lastpost=<post_name> in t
 If a post with post_name lastpost does not exist, no posts are shown.
 This is designed to be an archive for webcomics, designed so that only people who know the link can read it up to that point.
 
-If you change $renderall = false; to $renderall = true; in the line below, the code will revert to the default and show everything.
+when logged in as admin, you will see all posts.
 
 ********************************************************/
 
 
 
-$renderall = false;
+$renderall = inkblot_renderall();
+
+
 
 $lastpost = $_GET[lastpost];
 
@@ -47,13 +49,7 @@ if ( $lastpost != "") {
 }
 
 if ( is_null( $found_post ) && ! $renderall ){
-  if ( $lastpost == "") {
-    echo "<h1>Congratulations!</h1>You have come to the right place!<p>This is the archive for the @@@ comic. Please visit @@@Site Here@@@ to subscribe to my newsletter. I will send out a new episode for my webcomic every @@@, and as soon as you receive your first newsletter, you can read the episodes from the start on this website.</p>";
-  }
-  else
-  {
-    echo "<p style='font-size:36pt;'>Sorry, the post you are looking for was not found...</p>";
-  }
+  inkblot_welcome_to_archive();
 }
 else
 {
