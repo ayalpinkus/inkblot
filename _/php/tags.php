@@ -124,8 +124,8 @@ if ( ! function_exists('inkblot_post_datetime')) :
  * @return string
  */
 function inkblot_post_datetime() {
-	return sprintf('<a href="%1$s' . '?lastpost=' . $_GET['lastpost'] . '" rel="bookmark"><span class="screen-reader-text">%2$s </span><time datetime="%3$s">%4$s</time></a>',
-		esc_url(get_permalink() . '?lastpost=' . $_GET['lastpost']),
+	return sprintf('<a href="%1$s" rel="bookmark"><span class="screen-reader-text">%2$s </span><time datetime="%3$s">%4$s</time></a>',
+		esc_url(get_permalink() . inkblot_default_query_parameters(__FILE__,__LINE__)),
 		sprintf(__('%1$s published on', 'inkblot'), get_the_title()),
 		esc_attr(get_the_date('c')),
 		esc_html(get_the_date())
@@ -140,7 +140,7 @@ if ( ! function_exists('inkblot_post_author')) :
  * @return string
  */
 function inkblot_post_author() {
-	return sprintf('<a href="%1$s' . '?lastpost=' . $_GET['lastpost'] . '" rel="author"><span class="screen-reader-text">%2$s </span>%3$s</a>',
+	return sprintf('<a href="%1$s' . inkblot_default_query_parameters(__FILE__,__LINE__) . '" rel="author"><span class="screen-reader-text">%2$s </span>%3$s</a>',
 		get_author_posts_url(get_the_author_meta('ID')),
 		sprintf(__('Read more posts by the author of %1$s,', 'inkblot'), get_the_title()),
 		get_the_author()
@@ -158,8 +158,8 @@ function inkblot_post_parent() {
 	if ($ancestors = get_post_ancestors(get_the_ID())) {
 		$parent = current($ancestors);
 		
-		return sprintf('<a href="%1$s' . '?lastpost=' . $_GET['lastpost'] . '" rel="gallery"><span class="screen-reader-text">%2$s </span>%3$s</a>',
-			esc_url(get_permalink($parent) . '?lastpost=' . $_GET['lastpost']),
+		return sprintf('<a href="%1$s' . inkblot_default_query_parameters(__FILE__,__LINE__) . '" rel="gallery"><span class="screen-reader-text">%2$s </span>%3$s</a>',
+			esc_url(get_permalink($parent) . inkblot_default_query_parameters(__FILE__,__LINE__)),
 			__('Return to', 'inkblot'),
 			get_the_title($parent)
 		);
@@ -175,8 +175,8 @@ if ( ! function_exists('inkblot_image_details')) :
  */
 function inkblot_image_details() {
 	if ($data = wp_get_attachment_metadata() and isset($data['width'], $data['height'])) {
-		return sprintf('<a href="%1$s' . '?lastpost=' . $_GET['lastpost'] . '" class="image"><span class="screen-reader-text">%2$s </span>%3$s &#215; %4$s</a>',
-			esc_url(wp_get_attachment_url() . '?lastpost=' . $_GET['lastpost'] ),
+		return sprintf('<a href="%1$s' . inkblot_default_query_parameters(__FILE__,__LINE__) . '" class="image"><span class="screen-reader-text">%2$s </span>%3$s &#215; %4$s</a>',
+			esc_url(wp_get_attachment_url() . inkblot_default_query_parameters(__FILE__,__LINE__) ),
 			__('View image at full size,', 'inkblot'),
 			$data['width'],
 			$data['height']
@@ -204,8 +204,8 @@ function inkblot_start_comment($comment, $args, $depth) {
 				
 				comment_author_link();
 				
-				printf(__('<a href="%1$s' . '?lastpost=' . $_GET['lastpost'] . '" class="time"><span class="screen-reader-text">%2$s </span><time datetime="%3$s">%4$s @ %5$s</time></a>', 'inkblot'),
-					esc_url(get_comment_link($comment->comment_ID) . '?lastpost=' . $_GET['lastpost']),
+				printf(__('<a href="%1$s' . inkblot_default_query_parameters(__FILE__,__LINE__) . '" class="time"><span class="screen-reader-text">%2$s </span><time datetime="%3$s">%4$s @ %5$s</time></a>', 'inkblot'),
+					esc_url(get_comment_link($comment->comment_ID) . inkblot_default_query_parameters(__FILE__,__LINE__)),
 					sprintf(__('Comment by %s published on', 'inkblot'), get_comment_author()),
 					get_comment_time('c'),
 					get_comment_date(),
@@ -398,7 +398,7 @@ function inkblot_contributor($user, $avatar = 96) {
 			
 			<?php if ($post_count = count_user_posts($user)) : ?>
 				
-				<h2><a href="<?php print esc_url(get_author_posts_url($user) . '?lastpost=' . $_GET['lastpost'] ); ?>"><?php the_author_meta('display_name', $user); ?></a></h2>
+				<h2><a href="<?php print esc_url(get_author_posts_url($user) . inkblot_default_query_parameters(__FILE__,__LINE__) ); ?>"><?php the_author_meta('display_name', $user); ?></a></h2>
 				
 			<?php else : ?>
 				

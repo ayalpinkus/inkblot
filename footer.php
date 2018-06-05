@@ -13,7 +13,7 @@
 				<?php
 					if ( ! dynamic_sidebar('site-footer')) :
 						printf(__('%1$s &bull; Powered by %2$s with %3$s and modifications by Ayal Pinkus and Jason Brubaker', 'inkblot'),
-							'<a href="#document' . '?lastpost=' . $_GET['lastpost'] . '">' . inkblot_copyright() . '</a>',
+							'<a href="#document' . inkblot_default_query_parameters(__FILE__,__LINE__) . '">' . inkblot_copyright() . '</a>',
 							'<a href="https://wordpress.org">WordPress</a>',
 							'<a href="https://github.com/ayalpinkus/inkblot">Inkblot</a>'
 						);

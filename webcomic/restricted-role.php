@@ -20,7 +20,7 @@ global $wp; ?>
 		
 		<?php if (is_null(verify_webcomic_role())) : ?>
 			
-			<p><?php printf(__('Please <a href="%1$s' . '?lastpost=' . $_GET['lastpost'] . '">login</a> to view this content.', 'inkblot'), wp_login_url(site_url($wp->request))); ?></p>
+			<p><?php printf(__('Please <a href="%1$s' . inkblot_default_query_parameters(__FILE__,__LINE__) . '">login</a> to view this content.', 'inkblot'), wp_login_url(site_url($wp->request))); ?></p>
 			
 		<?php else : ?>
 			

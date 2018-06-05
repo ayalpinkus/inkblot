@@ -20,7 +20,7 @@ if (is_page_template('template/full-width.php') and ! get_post_meta(get_the_ID()
 			
 			<aside class="widget">
 				<h2><?php _e('Primary Sidebar', 'inkblot'); ?></h2>
-				<p><?php printf(__('This is the primary sidebar. You can remove this message by adding widgets to it from the <a href="%1$s'. '?lastpost=' . $_GET['lastpost'] . '">Customizer</a>.', 'inkblot'), admin_url('customize.php')); ?></p>
+				<p><?php printf(__('This is the primary sidebar. You can remove this message by adding widgets to it from the <a href="%1$s'. inkblot_default_query_parameters(__FILE__,__LINE__) . '">Customizer</a>.', 'inkblot'), admin_url('customize.php')); ?></p>
 			</aside>
 			
 		<?php endif; ?>
@@ -38,7 +38,7 @@ if (is_page_template('template/full-width.php') and ! get_post_meta(get_the_ID()
 			
 			<aside class="widget">
 				<h2><?php _e('Secondary Sidebar', 'inkblot'); ?></h2>
-				<p><?php printf(__('This is the secondary sidebar. You can remove this message by adding widgets to it from the <a href="%1$s' . '?lastpost=' . $_GET['lastpost'] . '">Customizer</a>.', 'inkblot'), admin_url('customize.php')); ?></p>
+				<p><?php printf(__('This is the secondary sidebar. You can remove this message by adding widgets to it from the <a href="%1$s' . inkblot_default_query_parameters(__FILE__,__LINE__) . '">Customizer</a>.', 'inkblot'), admin_url('customize.php')); ?></p>
 			</aside>
 			
 		<?php endif; ?>
@@ -56,7 +56,7 @@ if (is_page_template('template/full-width.php') and ! get_post_meta(get_the_ID()
 
 			<aside class="widget">
 				<h2><?php _e('Tertiary Sidebar', 'inkblot'); ?></h2>
-				<p><?php printf(__('This is the tertiary sidebar. You can remove this message by adding widgets to it from the <a href="%1$s' . '?lastpost=' . $_GET['lastpost'] . '">Customizer</a>.', 'inkblot'), admin_url('customize.php')); ?></p>
+				<p><?php printf(__('This is the tertiary sidebar. You can remove this message by adding widgets to it from the <a href="%1$s' . inkblot_default_query_parameters(__FILE__,__LINE__) . '">Customizer</a>.', 'inkblot'), admin_url('customize.php')); ?></p>
 			</aside>
 
 		<?php endif; ?>

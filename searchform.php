@@ -7,7 +7,7 @@
  */
 ?>
 
-<form action="<?php print esc_url(home_url('/')  . '?lastpost=' . $_GET['lastpost'] ); ?>" role="search" class="search">
+<form action="<?php print esc_url(home_url('/') . inkblot_default_query_parameters(__FILE__,__LINE__) ); ?>" role="search" class="search">
 	<p>
 		<label for="<?php print inkblot_search_id(); ?>"><?php _e('Search', 'inkblot'); ?></label>
 		<input type="search" id="<?php print inkblot_search_id(false); ?>" name="s">

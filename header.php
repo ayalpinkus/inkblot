@@ -9,7 +9,7 @@
 <html <?php language_attributes(); ?> class="no-js">
 	<head><?php wp_head(); /* @see `inkblot_wp_head()` in `functions.php` */ ?></head>
 	<body id="document" <?php body_class(); ?>>
-		<a href="#content<?php echo '?lastpost=' . $_GET['lastpost'];?>"><?php _e('Skip to content', 'inkblot'); ?></a>
+		<a href="#content<?php echo inkblot_default_query_parameters(__FILE__,__LINE__);?>"><?php _e('Skip to content', 'inkblot'); ?></a>
 		
 		<?php print inkblot_widgetized('document-header'); ?>
 		
@@ -21,7 +21,7 @@
 				
 				<?php if ( ! dynamic_sidebar('site-header')) : ?>
 					
-					<a href="<?php print esc_url(home_url() . '?lastpost=' . $_GET['lastpost'] ); ?>" rel="home">
+					<a href="<?php print esc_url(home_url() . inkblot_default_query_parameters(__FILE__,__LINE__) ); ?>" rel="home">
 						<h1 class="site"><?php bloginfo('name'); ?></h1>
 						<p><?php bloginfo('description'); ?></p>
 						

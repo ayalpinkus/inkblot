@@ -30,7 +30,7 @@ class Inkblot_Walker_Page_Dropdown extends Walker_PageDropdown {
 		if ( ! $output) {
 			$output = sprintf('<li %s><a href="%s">%s%s%s</a></li>',
 				($current_page == 0) ? 'class="current_page_item"' : '',
-				home_url('/'). '?lastpost=' . $_GET['lastpost'],
+				home_url('/') . inkblot_default_query_parameters(__FILE__,__LINE__),
 				$args['link_before'],
 				__('Home', 'inkblot'),
 				$args['link_after']
@@ -61,7 +61,7 @@ class Inkblot_Walker_Page_Dropdown extends Walker_PageDropdown {
 		
 		$output .= sprintf('<li %s><a href="%s" class="%s %s">%s%s%s%s%s',
 		        false !== strpos($classes, 'current_page_item') ? 'class="current_page_item"' : '',
-			get_permalink($page->ID) . '?lastpost=' . $_GET['lastpost'],
+			get_permalink($page->ID) . inkblot_default_query_parameters(__FILE__,__LINE__),
  			esc_attr($classes),
 			selected(false !== strpos($classes, 'current_page_item'), true, false),
 			str_repeat('&nbsp;', $depth * 4),

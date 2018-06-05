@@ -39,7 +39,7 @@
 			
 		<?php else : ?>
 			
-			<h2><a href="<?php the_permalink() . '?lastpost=' . $_GET['lastpost'] ; ?>" rel="bookmark"><?php the_title(); ?></a></h2>
+			<h2><a href="<?php the_permalink() . inkblot_default_query_parameters(__FILE__,__LINE__) ; ?>" rel="bookmark"><?php the_title(); ?></a></h2>
 			
 		<?php endif; ?>
 		
@@ -57,7 +57,7 @@
 				if (webcomic_prints_available()) :
 					// @todo why isn't there a Webcomic template tag for this?!
 					
-					printf('<a href="%1$s' . '?lastpost=' . $_GET['lastpost'] . '">%2$s</a>',
+					printf('<a href="%1$s' . inkblot_default_query_parameters(__FILE__,__LINE__) . '">%2$s</a>',
 						get_option('permalink_structure')
 							? trailingslashit(get_permalink()) . 'prints'
 							: add_query_arg(array('prints' => ''), get_permalink()),

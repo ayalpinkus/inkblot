@@ -186,7 +186,7 @@ function inkblot_after_setup_theme() {
 		}
 	}
 	
-	add_editor_style(add_query_arg(array('inkblot-mods' => 'editor'), home_url('/') . '?lastpost=' . $_GET['lastpost']));
+	add_editor_style(add_query_arg(array('inkblot-mods' => 'editor'), home_url('/') . inkblot_default_query_parameters(__FILE__,__LINE__)));
 	
 	add_filter('use_default_gallery_style', '__return_false');
 	add_filter('show_recent_comments_widget_style', '__return_false');
@@ -283,7 +283,7 @@ if ( ! function_exists('inkblot_excerpt_more')) :
  * @return string
  */
 function inkblot_excerpt_more() {
-	return '&#8230; <a href="' . get_permalink()  . '?lastpost=' . $_GET['lastpost'] . '" class="more-link">' . sprintf(__('Continue reading %1$s', 'inkblot'), '<span class="screen-reader-text">' . get_the_title() . '</span>') . '</a>';
+	return '&#8230; <a href="' . get_permalink()  . inkblot_default_query_parameters(__FILE__,__LINE__) . '" class="more-link">' . sprintf(__('Continue reading %1$s', 'inkblot'), '<span class="screen-reader-text">' . get_the_title() . '</span>') . '</a>';
 }
 endif;
 
@@ -294,6 +294,16 @@ if ( ! function_exists('inkblot_the_content_more_link')) :
  * @return string
  */
 function inkblot_the_content_more_link() {
-	return '<a href="' . get_permalink() . '?lastpost=' . $_GET['lastpost'] . '" class="more-link">' . sprintf(__('Continue reading %1$s', 'inkblot'), '<span class="screen-reader-text">' . get_the_title() . '</span>') . '</a>';
+	return '<a href="' . get_permalink() . inkblot_default_query_parameters(__FILE__,__LINE__) . '" class="more-link">' . sprintf(__('Continue reading %1$s', 'inkblot'), '<span class="screen-reader-text">' . get_the_title() . '</span>') . '</a>';
 }
 endif;
+
+if ( ! function_exists('inkblot_default_query_parameters')) :
+function inkblot_default_query_parameters($file,$line) {
+  return '?lastpost=' . $_GET['lastpost'] ; // . '&pos=' . $file . '_' . $line;
+}
+endif;
+
+
+
+
