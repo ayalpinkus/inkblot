@@ -69,9 +69,11 @@
 	
 	<footer class="post-footer">
 
+   <?php if (is_single()) : ?>
 
 <a href="<?php echo home_url('/') . inkblot_default_query_parameters(__FILE__,__LINE__); ?>"><h1>Visit the archive</h1></a>
 
+   <?php endif; ?>
 
 
 <!--@@@TODO AYAL: this renders the categories. The problem is I don't know how to append '?lastpost=' to the category urls
