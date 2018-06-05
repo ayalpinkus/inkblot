@@ -448,7 +448,11 @@ endif;
 
 if ( ! function_exists('inkblot_default_query_parameters')) :
 function inkblot_default_query_parameters($file,$line) {
-  return '?lastpost=' . $_GET['lastpost'] ; //  . '&pos=' . $file . '_' . $line;
+  $lastpost = $_GET['lastpost'];
+  if ($lastpost == "") {
+    $lastpost = get_post_field( 'post_name', get_post() );
+  } 
+  return '?lastpost=' . $lastpost ; //  . '&pos=' . $file . '_' . $line;
 }
 endif;
 
