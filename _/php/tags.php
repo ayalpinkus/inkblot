@@ -445,3 +445,11 @@ function inkblot_webcomic_transcript() { ?>
 	<?php
 }
 endif;
+
+if ( ! function_exists('inkblot_default_query_parameters')) :
+function inkblot_default_query_parameters($file,$line) {
+  return '?lastpost=' . $_GET['lastpost'] ; //  . '&pos=' . $file . '_' . $line;
+}
+endif;
+
+
