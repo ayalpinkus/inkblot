@@ -450,9 +450,15 @@ if ( ! function_exists('inkblot_default_query_parameters')) :
 function inkblot_default_query_parameters($file,$line) {
   $lastpost = $_GET['lastpost'];
   if ($lastpost == "") {
-    $lastpost = get_post_field( 'post_name', get_post() );
+    $post = get_post();
+    if (in_category(get_cat_ID('story'), $post) ) {
+      $lastpost = get_post_field( 'post_name', $post );
+    }
   } 
-  return '?lastpost=' . $lastpost ; //  . '&pos=' . $file . '_' . $line;
+  if ($lastpost != "") {
+    return '?lastpost=' . $lastpost ; //  . '&pos=' . $file . '_' . $line;
+  }
+  return "";
 }
 endif;
 
