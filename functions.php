@@ -328,11 +328,57 @@ if ( ! function_exists('inkblot_welcome_to_archive')) :
 function inkblot_welcome_to_archive() {
   $lastpost = $_GET[lastpost];
   if ( $lastpost == "") {
-    echo "<h1>Congratulations!</h1>You have come to the right place!<p>This is the archive for the @@@ comic. Please visit @@@Site Here@@@ to subscribe to my newsletter. I will send out a new episode for my webcomic every @@@, and as soon as you receive your first newsletter, you can read the episodes from the start on this website.</p>";
+    $custom_query = new WP_Query(array ('order' => 'asc' , 'cat' => inkblot_welcome_category() )); 
+    if (have_posts()) :
+      while($custom_query->have_posts()) : $custom_query->the_post();
+	get_template_part('content', get_post_format());
+      endwhile;
+      print inkblot_posts_nav(false, get_theme_mod('paged_navigation', true));
+    else :
+      echo "<h1>Congratulations!</h1>You have come to the right place!<p>This is an archive for a webcomic. Please contact the maintainer.<p>(To the maintainer: create a post with the category 'welcome' to replace this message)</p>";
+    endif;
   }
   else
   {
     echo "<p style='font-size:36pt;'>Sorry, the post you are looking for was not found...</p>";
   }
+}
+endif;
+
+
+
+if ( ! function_exists('inkblot_content_category')) :
+function inkblot_content_category() {
+  return get_cat_ID('story');
+}
+endif;
+
+
+if ( ! function_exists('inkblot_welcome_category')) :
+function inkblot_welcome_category() {
+  return get_cat_ID('welcome');
+}
+endif;
+
+
+if ( ! function_exists('inkblot_afterword_category')) :
+function inkblot_afterword_category() {
+  return get_cat_ID('afterword');
+}
+endif;
+
+if ( ! function_exists('inkblot_show_afterword')) :
+function inkblot_show_afterword() {
+/*
+*/
+  $custom_query = new WP_Query(array ('order' => 'asc' , 'cat' => inkblot_afterword_category() )); 
+  if (have_posts()) :
+    while($custom_query->have_posts()) : $custom_query->the_post();
+      get_template_part('content', get_post_format());
+    endwhile;
+    print inkblot_posts_nav(false, get_theme_mod('paged_navigation', true));
+  else :
+    echo "<h1>THE END</h1>";
+  endif;
 }
 endif;

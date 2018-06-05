@@ -9,8 +9,9 @@
 <html <?php language_attributes(); ?> class="no-js">
 	<head><?php wp_head(); /* @see `inkblot_wp_head()` in `functions.php` */ ?></head>
 	<body id="document" <?php body_class(); ?>>
+<!-- @@@TODO AYAL: do we need a skip to content?
 		<a href="#content<?php echo inkblot_default_query_parameters(__FILE__,__LINE__);?>"><?php _e('Skip to content', 'inkblot'); ?></a>
-		
+--!>		
 		<?php print inkblot_widgetized('document-header'); ?>
 		
 		<div class="wrapper">

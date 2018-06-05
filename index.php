@@ -54,26 +54,28 @@ if ( is_null( $found_post ) && ! $renderall ){
 else
 {
   $canshow=true;
+  
+  
+ $lastid = 0;
+  if ( ! is_null( $found_post )) {
+    $lastid = $found_post->ID;
+  }
 
-  $custom_query = new WP_Query('order=asc'); 
+  $custom_query = new WP_Query(array ('order' => 'asc' , 'cat' => inkblot_content_category() )); 
   if (have_posts()) :
     while($custom_query->have_posts()) : $custom_query->the_post();
-    if ($canshow) {
-      get_template_part('content', get_post_format());
-    }
 
     $post = get_post( $post );
-    $post_name = isset( $post->post_name ) ? $post->post_name : '';
-    if ($post_name == $lastpost) {
-      if (! is_null( $found_post )) {
-	$canshow = $renderall;
-      }
+    if ($renderall || $post->ID <= $lastid) {
+      get_template_part('content', get_post_format());
     }
     endwhile;
     print inkblot_posts_nav(false, get_theme_mod('paged_navigation', true));
   else :
     get_template_part('content', 'none');
   endif;
+
+  inkblot_show_afterword();
 }
 
 
