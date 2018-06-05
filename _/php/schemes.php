@@ -8,7 +8,7 @@
  */
 return array(
 	'inkblot' => array(
-		'name' => __('Inkblot', 'inkblot'),
+		'name' => __('Inkblot ACE', 'inkblot'),
 		'mods' => array(
 			'content' => 'one-column',
 			'sidebar1_width' => 25,
