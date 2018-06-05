@@ -25,20 +25,63 @@ get_header(); ?>
 		<?php endif; ?>
 		
 		<?php
+
+
+
+$renderall = inkblot_renderall();
+$lastpost = $_GET[lastpost];
+$found_post = null;
+
+if ( $lastpost != "") {
+  if ( $posts_search = get_posts( array( 
+      'name' => $lastpost, 
+      'post_type' => 'post',
+      'post_status' => 'publish',
+      'posts_per_page' => 1
+  ) ) ) {
+    $found_post = $posts_search[0];
+  }
+}
+
+if ( is_null( $found_post ) && ! $renderall ){
+  inkblot_welcome_to_archive();
+}
+else
+{
+  $canshow=true;
+    
+  $lastid = 0;
+  if ( ! is_null( $found_post )) {
+    $lastid = $found_post->ID;
+  }
+
+
+
+
+  $categories = get_the_category();
+  $category_id = $categories[0]->cat_ID;
+
 //			while (have_posts()) : the_post();
 
-                        $custom_query = new WP_Query('order=asc'); 
-                        while($custom_query->have_posts()) : $custom_query->the_post();
+  $custom_query = new WP_Query( array( 'order' => 'asc', 'cat' => $category_id ) ); 
+  while($custom_query->have_posts()) : $custom_query->the_post();
 
-				(webcomic() and is_a_webcomic())
-				? get_template_part('webcomic/content', get_post_type())
-				: get_template_part('content', get_post_format());
-			endwhile;
-			
-			print inkblot_posts_nav(false, get_theme_mod('paged_navigation', true));
-		else:
-			get_template_part('content', 'none');
-		endif;
+    $post = get_post( $post );
+    if ($renderall || $post->ID <= $lastid) {
+      (webcomic() and is_a_webcomic())
+        ? get_template_part('webcomic/content', get_post_type())
+        : get_template_part('content', get_post_format());
+    }
+  endwhile;
+		
+  print inkblot_posts_nav(false, get_theme_mod('paged_navigation', true));
+}
+
+else:
+  get_template_part('content', 'none');
+endif;
+
+
 	?>
 	
 </main>

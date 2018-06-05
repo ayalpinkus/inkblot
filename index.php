@@ -56,7 +56,7 @@ else
   $canshow=true;
   
   
- $lastid = 0;
+  $lastid = 0;
   if ( ! is_null( $found_post )) {
     $lastid = $found_post->ID;
   }

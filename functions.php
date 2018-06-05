@@ -18,9 +18,6 @@ require_once get_template_directory() . '/_/php/tags.php';
 require_once get_template_directory() . '/_/php/walker-nav-dropdown.php';
 require_once get_template_directory() . '/_/php/walker-page-dropdown.php';
 
-//@@@TODO couldn't get it to work...
-//require_once get_template_directory() . '/_/php/walker-category.php';
-
 
 
 if (is_admin() or is_customize_preview()) {
@@ -382,3 +379,8 @@ function inkblot_show_afterword() {
   endif;
 }
 endif;
+
+
+
+
+

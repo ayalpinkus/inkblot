@@ -61,6 +61,8 @@
 					'after' => '</div></nav>',
 					'pagelink' => sprintf('<span class="screen-reader-text">%s</span> %%', __('Page', 'inkblot'))
 				));
+
+
 			?>
 			
 		</div>
@@ -69,21 +71,39 @@
 	
 	<footer class="post-footer">
 
+<!-- @@@TODO AYAL no link to archive here maybe...
    <?php if (is_single()) : ?>
 
 <a href="<?php echo home_url('/') . inkblot_default_query_parameters(__FILE__,__LINE__); ?>"><h1>Visit the archive</h1></a>
 
    <?php endif; ?>
+--!>
 
 
-<!--@@@TODO AYAL: this renders the categories. The problem is I don't know how to append '?lastpost=' to the category urls
 		<?php
+
+
+/*
 			the_terms(get_the_ID(), 'category', sprintf('<span class="post-categories"><span class="screen-reader-text">%s </span>', __('Categories', 'inkblot')), __(', ', 'inkblot'), '</span>');
-			
 			the_tags(sprintf('<span class="post-tags"><span class="screen-reader-text">%s </span>', __('Tags', 'inkblot')), __(', ', 'inkblot'), '</span>');
+*/
+
+$allcats = wp_get_object_terms( get_the_ID(),  'category' );
+$nrcats=count($allcats);
+
+
+echo '<span class="post-categories"><span class="screen-reader-text">Categories </span>';
+for ($i=0 ; $i<$nrcats ; $i++)
+{
+  if ($i > 0) {
+    echo ', ';
+  }
+  echo '<a href="' . esc_url( get_term_link( $allcats[$i] )) . inkblot_default_query_parameters(__FILE__,__LINE__) . '" rel="tag">' . $allcats[$i]->name . '</a>';
+}
+echo '</span>';
+echo "<p>";
 
 		?>
---!>	
 
 		
 	</footer><!-- .post-footer -->
