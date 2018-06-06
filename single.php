@@ -26,8 +26,10 @@ if ($next_post != null) {
 }
 */
 
-if ($next_post->ID > inkblot_lastpost_id()) {
-  $next_post = null;
+if (!current_user_can('administrator')) {
+  if ($next_post->ID > inkblot_lastpost_id()) {
+    $next_post = null;
+  }
 }
 
   echo '	<nav class="navigation post-navigation" role="navigation">';
