@@ -54,9 +54,12 @@ if (!current_user_can('administrator')) {
 			));
 */
 
+
 			
 			comments_template();
 		endwhile;
+
+
 	?>
 	
 </main>

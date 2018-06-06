@@ -348,7 +348,7 @@ function inkblot_welcome_to_archive() {
       while($custom_query->have_posts()) : $custom_query->the_post();
 	get_template_part('content', get_post_format());
       endwhile;
-      print inkblot_posts_nav(false, get_theme_mod('paged_navigation', true));
+      //print inkblot_posts_nav(false, get_theme_mod('paged_navigation', true));
     else :
       echo "<h1>Congratulations!</h1>You have come to the right place!<p>This is an archive for a webcomic. Please contact the maintainer.<p>(To the maintainer: create a post with the category 'welcome' to replace this message, and posts filed under the category 'story' for the story, and a post filed under the category 'afterword' to append to the end of lists of posts)</p>";
     endif;
@@ -389,7 +389,7 @@ function inkblot_show_afterword() {
     while($custom_query->have_posts()) : $custom_query->the_post();
       get_template_part('content', get_post_format());
     endwhile;
-    print inkblot_posts_nav(false, get_theme_mod('paged_navigation', true));
+//    print inkblot_posts_nav(false, get_theme_mod('paged_navigation', true));
   else :
     echo "<h1>THE END</h1>";
   endif;
