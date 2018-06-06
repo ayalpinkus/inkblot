@@ -44,7 +44,7 @@ add_action( 'pre_get_posts', 'inkblot_default_query' );
 if ( ! function_exists('inkblot_default_query')) :
 function inkblot_default_query( $query ) {
   $query->set( 'order', 'asc' );
-  if (!isset( $query->query_vars[ 'inkblotcustom' ])) {
+  if (!isset( $query->query_vars[ 'inkblotcustom' ] ) && !is_category()) {
     $query->set( 'cat', inkblot_content_category() );
   }
 }

@@ -68,10 +68,21 @@ else
   $categories = get_the_category();
   $category_id = $categories[0]->cat_ID;
 
-//			while (have_posts()) : the_post();
 
+
+//global $wp_query;
+//var_dump($wp_query->query_vars);
+//var_dump($GLOBALS['wp_query']->query_vars['cat']);
+//  global $wp_query;
+//  echo "<p>QUERY = " . $GLOBALS['wp_the_query']->query_vars['cat'] . "</p>";
+
+
+			while (have_posts()) : the_post();
+
+/*
   $custom_query = new WP_Query( array( 'order' => 'asc', 'cat' => $category_id ) ); 
   while($custom_query->have_posts()) : $custom_query->the_post();
+*/
 
     $post = get_post( $post );
     if ($renderall || $post->ID <= $lastid) {
