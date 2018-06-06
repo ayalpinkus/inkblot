@@ -99,6 +99,9 @@ else:
   get_template_part('content', 'none');
 endif;
 
+  inkblot_show_afterword();
+
+
 
 	?>
 	
