@@ -1,5 +1,10 @@
 
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+?>
+
+<?php
 /**
  * The main template file.
  *
@@ -32,8 +37,7 @@ $renderall = inkblot_renderall();
 
 
 
-$lastpost = $_GET[lastpost];
-
+$lastpost = inkblot_lastpost();
 
 $found_post = null;
 

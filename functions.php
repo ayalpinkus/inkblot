@@ -258,17 +258,21 @@ function inkblot_body_class($classes, $class) {
 	}
 	
 	if (webcomic()) {
-		if (is_webcomic_archive()) {
-			$classes[] = 'post-type-archive-webcomic';
-		}
-		
-		if (is_webcomic_storyline()) {
-			$classes[] = 'tax-webcomic_storyline';
-		}
-		
-		if (is_webcomic_character()) {
-			$classes[] = 'tax-webcomic_character';
-		}
+	  if (is_webcomic_collection()) {
+		  $classes[] = 'post-type-archive-webcomic';
+	  }
+
+	  if (function_exists('is_webcomic_storyline')) {
+	    if (is_webcomic_storyline()) {
+	      $classes[] = 'tax-webcomic_storyline';
+	    }
+	  }
+
+	  if (function_exists('is_webcomic_character')) {
+	    if (is_webcomic_character()) {
+	      $classes[] = 'tax-webcomic_character';
+	    }
+	  }
 	}
 	
 	return $classes;
@@ -323,7 +327,7 @@ endif;
 
 if ( ! function_exists('inkblot_welcome_to_archive')) :
 function inkblot_welcome_to_archive() {
-  $lastpost = $_GET[lastpost];
+  $lastpost = inkblot_lastpost();
   if ( $lastpost == "") {
     $custom_query = new WP_Query(array ('order' => 'asc' , 'cat' => inkblot_welcome_category() )); 
     if (have_posts()) :
@@ -332,7 +336,7 @@ function inkblot_welcome_to_archive() {
       endwhile;
       print inkblot_posts_nav(false, get_theme_mod('paged_navigation', true));
     else :
-      echo "<h1>Congratulations!</h1>You have come to the right place!<p>This is an archive for a webcomic. Please contact the maintainer.<p>(To the maintainer: create a post with the category 'welcome' to replace this message)</p>";
+      echo "<h1>Congratulations!</h1>You have come to the right place!<p>This is an archive for a webcomic. Please contact the maintainer.<p>(To the maintainer: create a post with the category 'welcome' to replace this message, and posts filed under the category 'story' for the story, and a post filed under the category 'afterword' to append to the end of lists of posts)</p>";
     endif;
   }
   else
@@ -366,8 +370,6 @@ endif;
 
 if ( ! function_exists('inkblot_show_afterword')) :
 function inkblot_show_afterword() {
-/*
-*/
   $custom_query = new WP_Query(array ('order' => 'asc' , 'cat' => inkblot_afterword_category() )); 
   if (have_posts()) :
     while($custom_query->have_posts()) : $custom_query->the_post();
@@ -380,6 +382,19 @@ function inkblot_show_afterword() {
 }
 endif;
 
+
+
+
+
+if ( ! function_exists('inkblot_lastpost')) :
+function inkblot_lastpost() {
+  $lastpost = "";
+  if (array_key_exists ( 'lastpost' , $_GET )) {
+    $lastpost = $_GET['lastpost'];
+  }
+  return $lastpost;
+}
+endif;
 
 
 

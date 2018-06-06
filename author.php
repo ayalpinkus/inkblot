@@ -37,7 +37,7 @@ get_header(); ?>
 		<?php
 
 
-$lastpost = $_GET['lastpost'];
+$lastpost = inkblot_lastpost();
 
 $found_post = null;
 

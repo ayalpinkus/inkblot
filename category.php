@@ -29,7 +29,7 @@ get_header(); ?>
 
 
 $renderall = inkblot_renderall();
-$lastpost = $_GET[lastpost];
+$lastpost = inkblot_lastpost();
 $found_post = null;
 
 if ( $lastpost != "") {
