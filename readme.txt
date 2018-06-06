@@ -1,3 +1,16 @@
+
+=== Inkblot ACE ===
+
+Contributors: ayalpinkus
+Requires at least: 4.2
+Tested up to: 4.2.2
+Stable tag: 0.5.0
+License: GPLv3
+License URI: https://www.gnu.org/licenses/gpl.html
+Tags: black, blue, brown, gray, green, orange, pink, purple, red, silver, tan, white, yellow, dark, light, one-column, two-columns, three-columns, four-columns, left-sidebar, right-sidebar, fixed-layout, fluid-layout, flexible-header, responsive-layout, accessibility-ready, blavatar, custom-background, custom-colors, custom-header, custom-menu, editor-style, featured-image-header, featured-images, full-width-template, microformats, post-formats, rtl-language-support, sticky-post, theme-options, threaded-comments, translation-ready
+
+
+
 === Inkblot ===
 
 Contributors: mgsisk
