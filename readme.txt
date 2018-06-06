@@ -3,7 +3,7 @@
 
 Contributors: ayalpinkus
 Requires at least: 4.2
-Tested up to: 4.2.2
+Tested up to: 4.9.6
 Stable tag: 0.5.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl.html
