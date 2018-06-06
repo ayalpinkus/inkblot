@@ -41,6 +41,27 @@
 				
 				edit_post_link(sprintf(__('Edit %1$s', 'inkblot'), '<span class="screen-reader-text">' . get_the_title() . '</span>'));
 			?>
+
+
+			<?php
+
+echo "<br>";
+$allcats = wp_get_object_terms( get_the_ID(),  'category' );
+$nrcats=count($allcats);
+echo '<span class="post-categories"><span class="screen-reader-text">Categories </span>';
+for ($i=0 ; $i<$nrcats ; $i++)
+{
+  if ($i > 0) {
+    echo ', ';
+  }
+  echo '<a href="' . esc_url( get_term_link( $allcats[$i] )) . inkblot_default_query_parameters(__FILE__,__LINE__) . '" rel="tag">' . $allcats[$i]->name . '</a>';
+}
+echo '</span>';
+echo "<br>";
+
+			?>
+
+
 			
 		</div>
 	</header><!-- .post-header -->
@@ -87,20 +108,7 @@
 			the_tags(sprintf('<span class="post-tags"><span class="screen-reader-text">%s </span>', __('Tags', 'inkblot')), __(', ', 'inkblot'), '</span>');
 */
 
-$allcats = wp_get_object_terms( get_the_ID(),  'category' );
-$nrcats=count($allcats);
-
-
-echo '<span class="post-categories"><span class="screen-reader-text">Categories </span>';
-for ($i=0 ; $i<$nrcats ; $i++)
-{
-  if ($i > 0) {
-    echo ', ';
-  }
-  echo '<a href="' . esc_url( get_term_link( $allcats[$i] )) . inkblot_default_query_parameters(__FILE__,__LINE__) . '" rel="tag">' . $allcats[$i]->name . '</a>';
-}
-echo '</span>';
-echo "<p>";
+//WASHERE
 
 
 		?>

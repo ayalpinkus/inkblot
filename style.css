@@ -5,7 +5,7 @@ Author: Original work Michael Sisk, with modifications by Ayal Pinkus
 Author URI: http://mgsisk.com , https://www.ayalpinkus.nl/
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl.html
-Version: 0.6.0
+Version: 0.6.1
 Description: Elegant, fully responsive, highly customizable Webcomic-ready theme named in honor of Rorschach from the Watchmen graphic novel.
 Tags: black, blue, brown, gray, green, orange, pink, purple, red, silver, tan, white, yellow, dark, light, one-column, two-columns, three-columns, four-columns, left-sidebar, right-sidebar, fixed-layout, fluid-layout, flexible-header, responsive-layout, accessibility-ready, blavatar, custom-background, custom-colors, custom-header, custom-menu, editor-style, featured-image-header, featured-images, full-width-template, microformats, post-formats, rtl-language-support, sticky-post, theme-options, threaded-comments, translation-ready
 Text Domain: inkblot
@@ -1000,19 +1000,27 @@ form.search input {
     border-radius: .3rem;
     max-width: 100%; }
 .post-footer {
-  border-bottom: thin solid #767676;
+//  border-bottom: thin solid #767676;
   clear: both;
   font-size: smaller;
-  margin: 0 0 1rem;
-  padding: 0 0 1rem; }
+//  margin: 0 0 1rem;
+//  padding: 0 0 1rem;
+  margin: 0;
+  padding: 0;
+
+ }
   .post-footer span {
     color: #767676;
-    padding: 0 0 0 1rem; }
+//    padding: 0 0 0 1rem; 
+    padding: 0; 
+   }
     .post-footer span:first-child {
       padding: 0; }
     .post-footer span:before {
       font: 100%/1 awesome;
-      padding: 0 .3rem 0 0; }
+      padding: 0 .3rem 0 0; 
+      padding: 0; 
+    }
     .post-footer span.post-categories:before {
       content: '\f07c'; }
     .post-footer span.post-tags:before {
@@ -1316,17 +1324,17 @@ nav.pagination {
     box-shadow: none;
   }
   h1 {
-    font-size: 4rem;
+//    font-size: 4rem;
   }
 
   code,
   kbd,
   pre,
   samp {
-    font-size: 2rem; }
+//    font-size: 2rem; }
 
   body {
-    font-size:2rem;
+//    font-size:2rem;
   }
 }
 
