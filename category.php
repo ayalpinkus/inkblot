@@ -29,6 +29,10 @@ get_header(); ?>
 
 
 $renderall = inkblot_renderall();
+
+$lastid = inkblot_lastpost_id();
+
+/*@@@TODO remove?
 $lastpost = inkblot_lastpost();
 $found_post = null;
 
@@ -42,18 +46,21 @@ if ( $lastpost != "") {
     $found_post = $posts_search[0];
   }
 }
+*/
 
-if ( is_null( $found_post ) && ! $renderall ){
+if ( $lastid < 0 /*@@@TODO removeis_null( $found_post ) */ && ! $renderall ){
   inkblot_welcome_to_archive();
 }
 else
 {
   $canshow=true;
     
+/*@@@TODO remove?
   $lastid = 0;
   if ( ! is_null( $found_post )) {
     $lastid = $found_post->ID;
   }
+*/
 
 
 

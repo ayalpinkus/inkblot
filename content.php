@@ -52,16 +52,15 @@
 	<?php else : ?>
 		
 		<div class="post-content">
-			
+		
 			<?php
 				the_content();
-				
+
 				wp_link_pages(array(
 					'before' => sprintf('<nav class="navigation pagination post" role="navigation" aria-label="%s"><div class="nav-links">', __('Post pages navigation', 'inkblot')),
 					'after' => '</div></nav>',
 					'pagelink' => sprintf('<span class="screen-reader-text">%s</span> %%', __('Page', 'inkblot'))
 				));
-
 
 			?>
 			
@@ -102,6 +101,7 @@ for ($i=0 ; $i<$nrcats ; $i++)
 }
 echo '</span>';
 echo "<p>";
+
 
 		?>
 

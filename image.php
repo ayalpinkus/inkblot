@@ -31,6 +31,8 @@ get_header(); ?>
 					
 				</div>
 			</header><!-- .post-header -->
+
+
 			
 			<nav class="navigation image-navigation" role="navigation" aria-label="<?php _e('Image navigation', 'inkblot'); ?>">
 				<div class="nav-links">
@@ -38,7 +40,8 @@ get_header(); ?>
 					<div class="nav-next"><?php next_image_link(array(64, 64)); ?></div>
 				</div>
 			</nav>
-			
+
+		
 			<div class="post-image">
 				
 				<?php the_attachment_link($post->ID, true); ?>

@@ -37,9 +37,11 @@ $renderall = inkblot_renderall();
 
 
 
-$lastpost = inkblot_lastpost();
 
+/*@@@TODO remove?
+$lastpost = inkblot_lastpost();
 $found_post = null;
+$lastid = -1;
 
 if ( $lastpost != "") {
   if ( $posts_search = get_posts( array( 
@@ -49,21 +51,21 @@ if ( $lastpost != "") {
       'posts_per_page' => 1
   ) ) ) {
     $found_post = $posts_search[0];
+    $lastid = $found_post->ID;
   }
 }
+*/
 
-if ( is_null( $found_post ) && ! $renderall ){
+$lastid = inkblot_lastpost_id();
+
+
+if ( $lastid < 0 /*@@@TODO remove is_null( $found_post ) */ && ! $renderall ){
   inkblot_welcome_to_archive();
 }
 else
 {
   $canshow=true;
   
-  
-  $lastid = 0;
-  if ( ! is_null( $found_post )) {
-    $lastid = $found_post->ID;
-  }
 
   $custom_query = new WP_Query(array ('order' => 'asc' , 'cat' => inkblot_content_category() )); 
   if (have_posts()) :

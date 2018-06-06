@@ -397,5 +397,25 @@ function inkblot_lastpost() {
 endif;
 
 
+if ( ! function_exists('inkblot_lastpost_id')) :
+function inkblot_lastpost_id() {
+  $lastpost = inkblot_lastpost();
+
+  $lastid = -1;
+
+  if ( $lastpost != "") {
+    if ( $posts_search = get_posts( array( 
+	'name' => $lastpost, 
+	'post_type' => 'post',
+	'post_status' => 'publish',
+	'posts_per_page' => 1
+    ) ) ) {
+      $found_post = $posts_search[0];
+      $lastid = $found_post->ID;
+    }
+  }
+  return $lastid;
+}
+endif;
 
 
