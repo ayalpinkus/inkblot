@@ -33,26 +33,16 @@ get_header(); ?>
 			<div class="page-content"><?php the_author_meta('description'); ?></div><!-- .page-content -->
 			
 		<?php endif; ?>
+
+<p style="display:block; clear:both;"> </p>
 		
 		<?php
 
 
-/*@@@TODO remove?
-$lastpost = inkblot_lastpost();
-$found_post = null;
-if ( $lastpost != "") {
-  if ( $posts_search = get_posts( array( 
-      'name' => $lastpost, 
-      'post_type' => 'post',
-      'post_status' => 'publish',
-      'posts_per_page' => 1
-  ) ) ) {
-    $found_post = $posts_search[0];
-  }
-}
-*/
 
-if ( $lastid < 0 /*@@@TODO removeis_null( $found_post ) */ && ! $renderall ){
+
+
+if ( $lastid < 0 && ! $renderall ){
   inkblot_welcome_to_archive();
 }
 else
@@ -60,17 +50,13 @@ else
 
   $canshow=true;
 
-/*@@@TODO remove
-  $lastid = 0;
-  if ( ! is_null( $found_post )) {
-    $lastid = $found_post->ID;
-  }
-*/
+
   $lastid = inkblot_lastpost_id();
 
 
-  if (have_posts()) :
+//  if (have_posts()) :
     while (have_posts()) : the_post();
+
 
 /*
   $custom_query = new WP_Query(array ('order' => 'asc' , 'cat' => inkblot_content_category() )); 
