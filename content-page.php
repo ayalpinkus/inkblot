@@ -32,7 +32,7 @@
 		
 		<?php
 			the_content();
-echo "<p style='color:red; font-size:36pt;'>HIER</p>";
+//@@@TODO remove Jason, sorry about that... echo "<p style='color:red; font-size:36pt;'>HIER</p>";
 
 			wp_link_pages(array(
 				'before' => sprintf('<nav class="navigation pagination post" role="navigation" aria-label="%s"><div class="nav-links">', __('Post pages navigation', 'inkblot')),
