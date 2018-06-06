@@ -67,9 +67,14 @@ else
   $canshow=true;
   
 
+  if (have_posts()) :
+    while (have_posts()) : the_post();
+
+/*
   $custom_query = new WP_Query(array ('order' => 'asc' , 'cat' => inkblot_content_category() )); 
   if (have_posts()) :
     while($custom_query->have_posts()) : $custom_query->the_post();
+*/
 
     $post = get_post( $post );
     if ($renderall || $post->ID <= $lastid) {

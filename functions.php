@@ -37,6 +37,20 @@ add_filter('body_class', 'inkblot_body_class', 10, 2);
 add_filter('excerpt_more', 'inkblot_excerpt_more');
 add_filter('the_content_more_link', 'inkblot_the_content_more_link');
 
+
+
+add_action( 'pre_get_posts', 'inkblot_default_query' );
+
+if ( ! function_exists('inkblot_default_query')) :
+function inkblot_default_query( $query ) {
+  $query->set( 'order', 'asc' );
+  if (!isset( $query->query_vars[ 'inkblotcustom' ])) {
+    $query->set( 'cat', inkblot_content_category() );
+  }
+}
+endif;
+
+
 if ( ! function_exists('inkblot_after_switch_theme')) :
 /**
  * Activation hook.
@@ -329,7 +343,7 @@ if ( ! function_exists('inkblot_welcome_to_archive')) :
 function inkblot_welcome_to_archive() {
   $lastpost = inkblot_lastpost();
   if ( $lastpost == "") {
-    $custom_query = new WP_Query(array ('order' => 'asc' , 'cat' => inkblot_welcome_category() )); 
+    $custom_query = new WP_Query(array ('order' => 'asc' , 'cat' => inkblot_welcome_category(), 'inkblotcustom' => 'true' )); 
     if (have_posts()) :
       while($custom_query->have_posts()) : $custom_query->the_post();
 	get_template_part('content', get_post_format());
@@ -370,7 +384,7 @@ endif;
 
 if ( ! function_exists('inkblot_show_afterword')) :
 function inkblot_show_afterword() {
-  $custom_query = new WP_Query(array ('order' => 'asc' , 'cat' => inkblot_afterword_category() )); 
+  $custom_query = new WP_Query(array ('order' => 'asc' , 'cat' => inkblot_afterword_category(), 'inkblotcustom' => 'true' )); 
   if (have_posts()) :
     while($custom_query->have_posts()) : $custom_query->the_post();
       get_template_part('content', get_post_format());
