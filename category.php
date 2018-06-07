@@ -48,8 +48,8 @@ if ( $lastpost != "") {
 }
 */
 
-if ( $lastid < 0 /*@@@TODO removeis_null( $found_post ) */ && ! $renderall ){
-  inkblot_welcome_to_archive();
+if ( $lastid < 0 && ! $renderall ){
+//  inkblot_w elcome_to_archive();
 }
 else
 {

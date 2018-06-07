@@ -59,8 +59,8 @@ if ( $lastpost != "") {
 $lastid = inkblot_lastpost_id();
 
 
-if ( $lastid < 0 /*@@@TODO remove is_null( $found_post ) */ && ! $renderall ){
-  inkblot_welcome_to_archive();
+if ( $lastid < 0 && ! $renderall ){
+//  inkblot_w elcome_to_archive();
 }
 else
 {

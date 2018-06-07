@@ -26,7 +26,7 @@ The original Webcomic theme.
 
 Additional modifications in this fork of Inkblot were made by Ayal Pinkus and Jason Brubaker. This forked version is designed to act as an archive for use with a comics mailing list: it shows posts from oldest to newest for a better reading experience, and a 'lastpost' query parameter is required, being the name (slug) of the last post to be shown. 
 
-Create story posts under the 'story' category, and under the 'welcome' category for a welcome message/call to action. Posts filed under the category 'afterword' will be appended below the list of posts. You could add a call to action in that post, to join a mailing list for example.
+Create story posts under the 'story' category, and under the 'afterword' category for a call to action. Posts filed under the category 'afterword' will be appended below the list of posts. You could add a call to action in that post, to join a mailing list for example.
 
 == Description ==
 

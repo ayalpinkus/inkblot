@@ -43,7 +43,7 @@ get_header(); ?>
 
 
 if ( $lastid < 0 && ! $renderall ){
-  inkblot_welcome_to_archive();
+//  inkblot_w elcome_to_archive();
 }
 else
 {
