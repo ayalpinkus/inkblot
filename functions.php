@@ -44,8 +44,10 @@ add_action( 'pre_get_posts', 'inkblot_default_query' );
 if ( ! function_exists('inkblot_default_query')) :
 function inkblot_default_query( $query ) {
   $query->set( 'order', 'asc' );
-  if (!isset( $query->query_vars[ 'inkblotcustom' ] ) && !is_category()) {
-    $query->set( 'cat', inkblot_content_category() );
+  if (!is_admin()) {
+    if (!isset( $query->query_vars[ 'inkblotcustom' ] ) && !is_category()) {
+      $query->set( 'cat', inkblot_content_category() );
+    }
   }
 }
 endif;
@@ -321,10 +323,12 @@ endif;
 if ( ! function_exists('inkblot_renderall')) :
 function inkblot_renderall() {
   $renderall = false;
+/*
   if( current_user_can('administrator')) {
     $renderall = true;
     echo "<div style='display:block; clear:both; background:#f8f8f8; min-height:1in; font-size:24pt; padding-bottom:0.25in; padding-top:0.25in;'><b>NOTE:</b> you are logged in as administrator of this site, and the administrator can see all posts. You you may see something that is different from what regular visitors see.<hr></div><p style='clear:both;'>";
   }
+*/
   return $renderall;
 }
 endif;
@@ -344,13 +348,13 @@ function inkblot_welcome_to_archive() {
   $lastpost = inkblot_lastpost();
   if ( $lastpost == "") {
     $custom_query = new WP_Query(array ('order' => 'asc' , 'cat' => inkblot_welcome_category(), 'inkblotcustom' => 'true' )); 
-    if (have_posts()) :
+    if ($custom_query->have_posts()) :
       while($custom_query->have_posts()) : $custom_query->the_post();
 	get_template_part('content', get_post_format());
       endwhile;
       //print inkblot_posts_nav(false, get_theme_mod('paged_navigation', true));
     else :
-      echo "<h1>Congratulations!</h1>You have come to the right place!<p>This is an archive for a webcomic. Please contact the maintainer.<p>(To the maintainer: create a post with the category 'welcome' to replace this message, and posts filed under the category 'story' for the story, and a post filed under the category 'afterword' to append to the end of lists of posts)</p>";
+      echo "<h1>Welcome!</h1>To the maintainer of this site: you can create posts filed under the category 'welcome' and they will show here instead of this text.<p>You can also file posts under the category 'afterword' to specify a call to action to be placed below lists of posts.<p>Posts filed under the category 'story' will be included in the lists of posts.<p>Visitors can not see posts by default. If you go to the admin area, and click on the permalink of a post, you can share the url in the url bar of the browser, and people will be able to see all posts upto that post.<p>This theme is meant to be used as an archive for a newsletter, allowing people to see all posts upto a specified point.<p>";
     endif;
   }
   else
@@ -385,13 +389,14 @@ endif;
 if ( ! function_exists('inkblot_show_afterword')) :
 function inkblot_show_afterword() {
   $custom_query = new WP_Query(array ('order' => 'asc' , 'cat' => inkblot_afterword_category(), 'inkblotcustom' => 'true' )); 
-  if (have_posts()) :
+  if ($custom_query->have_posts()) :
     while($custom_query->have_posts()) : $custom_query->the_post();
       get_template_part('content', get_post_format());
     endwhile;
 //    print inkblot_posts_nav(false, get_theme_mod('paged_navigation', true));
   else :
     echo "<h1>THE END</h1>";
+    echo "<h2>To the maintainer of this site: you can add posts filed under the category 'afterword', and it will show here instead of this text.</h2>";
   endif;
 }
 endif;

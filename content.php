@@ -21,6 +21,21 @@
 		<?php if (is_single()) : ?>
 			
 			<h1><?php the_title(); ?></h1>
+
+
+		<?php
+if( current_user_can('administrator')) {
+
+  if ($_GET['lastpost'] == "") {
+    $post = get_post();
+    echo '<script type="text/javascript">';
+    echo 'var stateObj = { foo: "bar" };';
+    echo 'history.pushState(stateObj, "", "' . get_permalink($post->ID) . inkblot_default_query_parameters(__FILE__,__LINE__) . '");';
+    echo '</script>';
+  }
+}
+                ?>
+
 			
 		<?php else : ?>
 			
@@ -32,32 +47,27 @@
 			
 			<?php
 				print inkblot_post_datetime();
-				
 				print inkblot_post_author();
-				
 				if ( ! post_password_required() and (comments_open() or get_comments_number())) :
 					comments_popup_link();
 				endif;
-				
 				edit_post_link(sprintf(__('Edit %1$s', 'inkblot'), '<span class="screen-reader-text">' . get_the_title() . '</span>'));
 			?>
 
-
 			<?php
-
-echo "<br>";
-$allcats = wp_get_object_terms( get_the_ID(),  'category' );
-$nrcats=count($allcats);
-echo '<span class="post-categories"><span class="screen-reader-text">Categories </span>';
-for ($i=0 ; $i<$nrcats ; $i++)
-{
-  if ($i > 0) {
-    echo ', ';
-  }
-  echo '<a href="' . esc_url( get_term_link( $allcats[$i] )) . inkblot_default_query_parameters(__FILE__,__LINE__) . '" rel="tag">' . $allcats[$i]->name . '</a>';
-}
-echo '</span>';
-echo "<br>";
+				echo "<br>";
+				$allcats = wp_get_object_terms( get_the_ID(),  'category' );
+				$nrcats=count($allcats);
+				echo '<span class="post-categories"><span class="screen-reader-text">Categories </span>';
+				for ($i=0 ; $i<$nrcats ; $i++)
+				{
+				  if ($i > 0) {
+				    echo ', ';
+				  }
+				  echo '<a href="' . esc_url( get_term_link( $allcats[$i] )) . inkblot_default_query_parameters(__FILE__,__LINE__) . '" rel="tag">' . $allcats[$i]->name . '</a>';
+				}
+				echo '</span>';
+				echo "<br>";
 
 			?>
 

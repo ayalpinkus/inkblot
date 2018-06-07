@@ -449,7 +449,7 @@ endif;
 if ( ! function_exists('inkblot_default_query_parameters')) :
 function inkblot_default_query_parameters($file,$line) {
   $lastpost = inkblot_lastpost();
-  if ($lastpost == "") {
+  if ($lastpost == "" && is_single()) {
     $post = get_post();
     if (in_category(get_cat_ID('story'), $post) ) {
       $lastpost = get_post_field( 'post_name', $post );
