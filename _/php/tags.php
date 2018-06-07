@@ -106,8 +106,8 @@ if ( ! function_exists('inkblot_posts_nav')) :
 function inkblot_posts_nav($args = array(), $paged = false) {
 	return $paged
 		? get_the_posts_pagination(array_merge(array(
-			'prev_text' => __('&laquo; Previous Page', 'inkblot'),
-			'next_text' => __('Next Page &raquo;', 'inkblot'),
+			'prev_text' => '<span style="font-size:72pt;">&laquo;</span>' /* __('&laquo; Previous Page', 'inkblot') */ ,
+			'next_text' => '<span style="font-size:72pt;">&raquo;</span>' /* __('Next Page &raquo;', 'inkblot') */ ,
 			'before_page_number' => sprintf('<span class="screen-reader-text">%s </span>', __('Page', 'inkblot'))
 		), (array) $args))
 		: get_the_posts_navigation(array_merge(array(
