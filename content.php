@@ -24,6 +24,7 @@
 
 
 		<?php
+/*@@@TODO remove?
 if( current_user_can('administrator')) {
 
   if ($_GET['lastpost'] == "") {
@@ -34,6 +35,7 @@ if( current_user_can('administrator')) {
     echo '</script>';
   }
 }
+*/
                 ?>
 
 			
