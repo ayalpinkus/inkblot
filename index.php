@@ -60,7 +60,7 @@ $lastid = inkblot_lastpost_id();
 
 
 if ( $lastid < 0 && ! $renderall ){
-//  inkblot_w elcome_to_archive();
+  inkblot_welcome_to_archive();
 }
 else
 {

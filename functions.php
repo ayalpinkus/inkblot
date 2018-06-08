@@ -342,19 +342,19 @@ endif;
 
 
 
-/*
-if ( ! function_exists('inkblot_w elcome_to_archive')) :
-function inkblot_w elcome_to_archive() {
+
+if ( ! function_exists('inkblot_welcome_to_archive')) :
+function inkblot_welcome_to_archive() {
   $lastpost = inkblot_lastpost();
   if ( $lastpost == "") {
-    $custom_query = new WP_Query(array ('order' => 'asc' , 'cat' => inkblot_w elcome_category(), 'inkblotcustom' => 'true' )); 
+    $custom_query = new WP_Query(array ('order' => 'asc' , 'cat' => inkblot_welcome_category(), 'inkblotcustom' => 'true' )); 
     if ($custom_query->have_posts()) :
       while($custom_query->have_posts()) : $custom_query->the_post();
 	get_template_part('content', get_post_format());
       endwhile;
       //print inkblot_posts_nav(false, get_theme_mod('paged_navigation', true));
     else :
-      echo "<h1>W elcome!</h1>To the maintainer of this site: you can create posts filed under the category 'w elcome' and they will show here instead of this text.<p>You can also file posts under the category 'afterword' to specify a call to action to be placed below lists of posts.<p>Posts filed under the category 'story' will be included in the lists of posts.<p>Visitors can not see posts by default. If you go to the admin area, and click on the permalink of a post, you can share the url in the url bar of the browser, and people will be able to see all posts upto that post.<p>This theme is meant to be used as an archive for a newsletter, allowing people to see all posts upto a specified point.<p>";
+      echo "<h1>Welcome!</h1>To the maintainer of this site: you can create posts filed under the category 'welcome' and they will show here instead of this text.<p>You can also file posts under the category 'afterword' to specify a call to action to be placed below lists of posts.<p>Posts filed under the category 'story' will be included in the lists of posts.<p>Visitors can not see posts by default. If you go to the admin area, and click on the permalink of a post, you can share the url in the url bar of the browser, and people will be able to see all posts upto that post.<p>This theme is meant to be used as an archive for a newsletter, allowing people to see all posts upto a specified point.<p>";
     endif;
   }
   else
@@ -363,7 +363,7 @@ function inkblot_w elcome_to_archive() {
   }
 }
 endif;
-*/
+
 
 
 if ( ! function_exists('inkblot_content_category')) :
@@ -372,13 +372,13 @@ function inkblot_content_category() {
 }
 endif;
 
-/*
-if ( ! function_exists('inkblot_w elcome_category')) :
-function inkblot_w elcome_category() {
-  return get_cat_ID('w elcome');
+
+if ( ! function_exists('inkblot_welcome_category')) :
+function inkblot_welcome_category() {
+  return get_cat_ID('welcome');
 }
 endif;
-*/
+
 
 if ( ! function_exists('inkblot_afterword_category')) :
 function inkblot_afterword_category() {
