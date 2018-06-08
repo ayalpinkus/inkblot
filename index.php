@@ -78,7 +78,9 @@ else
 
     $post = get_post( $post );
     if ($renderall || $post->ID <= $lastid) {
+echo '<a href="' . get_permalink($post->ID) . inkblot_default_query_parameters(__FILE__,__LINE__) . '">';
       get_template_part('content', get_post_format());
+echo "</a>";
     }
     endwhile;
     print inkblot_posts_nav(false, get_theme_mod('paged_navigation', true));
@@ -86,6 +88,7 @@ else
     get_template_part('content', 'none');
   endif;
 
+  inkblot_list_all_content_child_categories();
   inkblot_show_afterword();
 }
 

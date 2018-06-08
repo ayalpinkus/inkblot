@@ -438,3 +438,61 @@ function inkblot_lastpost_id() {
 endif;
 
 
+
+
+
+
+
+
+
+
+
+
+
+if ( ! function_exists('inkblot_insert_story_child_categories')) :
+function inkblot_insert_story_child_categories() {
+  echo "<br>";
+
+  $allcats = wp_get_object_terms( get_the_ID(),  'category' );
+  $nrcats=count($allcats);
+  echo '<span class="post-categories"><span class="screen-reader-text">Categories </span>';
+  $j=0;
+  $parentcat = inkblot_content_category();
+
+  for ($i=0 ; $i<$nrcats ; $i++) {
+    if (cat_is_ancestor_of( $parentcat, $allcats[$i] )) {
+      if ($j > 0) {
+        echo ', ';
+      }
+      $j = $j + 1;
+      echo '<a href="' . esc_url( get_term_link( $allcats[$i] )) . inkblot_default_query_parameters(__FILE__,__LINE__) . '" rel="tag">' . $allcats[$i]->name . '</a>';
+    }
+  }
+  echo '</span>';
+
+  echo "<br>";
+}
+endif;
+
+
+
+
+if ( ! function_exists('inkblot_list_all_content_child_categories')) :
+function inkblot_list_all_content_child_categories() {
+
+
+  $allcats = get_categories(array('child_of' => inkblot_content_category(), 'hide_empty' => 0));
+  $nrcats=count($allcats);
+
+  for ($i=0 ; $i<$nrcats ; $i++) {
+    if ($i > 0) {
+      echo ', ';
+    }
+    echo '<a href="' . esc_url( get_term_link( $allcats[$i] )) . inkblot_default_query_parameters(__FILE__,__LINE__) . '" rel="tag">' . $allcats[$i]->name . '</a>';
+  }
+
+
+
+}
+endif;
+

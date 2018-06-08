@@ -18,6 +18,8 @@ get_header(); ?>
 
 
 
+inkblot_insert_story_child_categories();
+
 $prev_post = get_previous_post();
 $next_post = get_next_post();
 /*

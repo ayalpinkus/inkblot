@@ -40,10 +40,18 @@ if( current_user_can('administrator')) {
 
 			
 		<?php else : ?>
-			
+
+<!--			
 			<h2><a href="<?php echo the_permalink() . inkblot_default_query_parameters(__FILE__,__LINE__) ; ?>" rel="bookmark"><?php the_title(); ?></a></h2>
+
+--!>
 			
+
 		<?php endif; ?>
+
+
+<!-- only include post details in post page. --!>
+                <?php if (is_single()) : ?>
 		
 		<div class="post-details">
 			
@@ -56,26 +64,22 @@ if( current_user_can('administrator')) {
 				edit_post_link(sprintf(__('Edit %1$s', 'inkblot'), '<span class="screen-reader-text">' . get_the_title() . '</span>'));
 			?>
 
+<!--@@@TODO remove?
 			<?php
-				echo "<br>";
-				$allcats = wp_get_object_terms( get_the_ID(),  'category' );
-				$nrcats=count($allcats);
-				echo '<span class="post-categories"><span class="screen-reader-text">Categories </span>';
-				for ($i=0 ; $i<$nrcats ; $i++)
-				{
-				  if ($i > 0) {
-				    echo ', ';
-				  }
-				  echo '<a href="' . esc_url( get_term_link( $allcats[$i] )) . inkblot_default_query_parameters(__FILE__,__LINE__) . '" rel="tag">' . $allcats[$i]->name . '</a>';
-				}
-				echo '</span>';
-				echo "<br>";
+
+                                inkblot_insert_story_child_categories();
 
 			?>
-
-
+--!>
 			
 		</div>
+
+
+
+		<?php endif; ?>
+
+
+
 	</header><!-- .post-header -->
 	
 	<?php if (is_search()) : ?>
