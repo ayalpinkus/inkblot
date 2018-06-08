@@ -86,9 +86,13 @@ else
 
     $post = get_post( $post );
     if ($renderall || $post->ID <= $lastid) {
+      echo '<a href="' . get_permalink($post->ID) . inkblot_default_query_parameters(__FILE__,__LINE__) . '">';
+
       (webcomic() and is_a_webcomic())
         ? get_template_part('webcomic/content', get_post_type())
         : get_template_part('content', get_post_format());
+
+      echo "</a>";
     }
   endwhile;
 		
