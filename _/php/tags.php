@@ -107,12 +107,34 @@ function inkblot_posts_nav($args = array(), $paged = false) {
 
 /* __('&laquo; Previous Page', 'inkblot')  &laquo; */
 /* __('Next Page &raquo;', 'inkblot')  &raquo; */
-	return $paged
-		? get_the_posts_pagination(array_merge(array(
+
+/*
+get_the_posts_pagination(array_merge(array(
 			'prev_text' => '<div class="inkblot-ace-arrow-container" ><div class="arrow-left"></div> <div class="arrow-left"></div></div>'  ,
 			'next_text' => '<div class="inkblot-ace-arrow-container" ><div class="arrow-right"></div> <div class="arrow-right"></div></div>'  ,
 			'before_page_number' => sprintf('<span class="screen-reader-text">%s </span>', __('Page', 'inkblot'))
 		), (array) $args))
+*/
+
+	$prevstr = get_previous_posts_link('<div class="inkblot-ace-arrow-container" ><div class="arrow-left"></div> <div class="arrow-left"></div></div>');
+
+	$nextstr = get_next_posts_link('<div class="inkblot-ace-arrow-container" ><div class="arrow-right"></div> <div class="arrow-right"></div></div>');
+
+	if ($prevstr == "") {
+	  $prevstr = '<div class="inkblot-ace-arrow-container-disabled" ><div class="arrow-left"></div> <div class="arrow-left"></div></div>';
+	}
+	if ($nextstr == "") {
+	  $nextstr = '<div class="inkblot-ace-arrow-container-disabled" ><div class="arrow-right"></div> <div class="arrow-right"></div></div>';
+	}
+
+
+//
+
+
+	return $paged
+		? '<nav class="navigation pagination" role="navigation"><h2 class="screen-reader-text">Posts navigation</h2>' . 
+  $prevstr . $nextstr . 
+  '</nav>'
 		: get_the_posts_navigation(array_merge(array(
 			'prev_text' => __('&laquo; Previous Page', 'inkblot'),
 			'next_text' => __('Next Page &raquo;', 'inkblot')

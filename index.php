@@ -89,6 +89,7 @@ else
   endif;
 
   inkblot_list_all_content_child_categories();
+
   inkblot_show_afterword();
 }
 
