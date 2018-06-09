@@ -34,10 +34,30 @@ if ($next_post != null) {
   }
 //}
 
+  echo '	<nav class="navigation pagination" role="navigation">';
+  echo '		<h2 class="screen-reader-text">Post navigation</h2>';
+
+  if ($prev_post != null) {
+
+    echo '<a href="' . get_permalink($prev_post->ID) . inkblot_default_query_parameters(__FILE__,__LINE__) . '" rel="prev"><div class="inkblot-ace-arrow-container" ><div class="arrow-left"></div> <div class="arrow-left"></div></div></a>';
+
+  }
+  else {
+    echo '<div class="inkblot-ace-arrow-container-disabled" ><div class="arrow-left"></div> <div class="arrow-left"></div></div>';
+  }
+
+  if ($next_post != null) {
+    echo '<a href="' . get_permalink($next_post->ID) . inkblot_default_query_parameters(__FILE__,__LINE__) . '" rel="next"><div class="inkblot-ace-arrow-container" ><div class="arrow-right"></div> <div class="arrow-right"></div></div></a>';
+  }
+  else {
+    echo '<div class="inkblot-ace-arrow-container-disabled" ><div class="arrow-right"></div> <div class="arrow-right"></div></div>';
+  }
+  echo '	</nav>';
+
+/*
   echo '	<nav class="navigation post-navigation" role="navigation">';
   echo '		<h2 class="screen-reader-text">Post navigation</h2>';
   echo '		<div class="nav-links">';
-
   if ($prev_post != null) {
     echo '<div class="nav-previous"><a href="' . get_permalink($prev_post->ID) . inkblot_default_query_parameters(__FILE__,__LINE__) . '" rel="prev"><span class="screen-reader-text">Previous post:  </span>' . get_the_title( $prev_post ) . '</a></div>';
   }
@@ -47,6 +67,10 @@ if ($next_post != null) {
   }
   echo '</div>';
   echo '	</nav>';
+*/
+
+
+
 
 
 /*		
