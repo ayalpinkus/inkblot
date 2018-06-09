@@ -5,7 +5,7 @@ Author: Original work Michael Sisk, with modifications by Ayal Pinkus
 Author URI: http://mgsisk.com , https://www.ayalpinkus.nl/
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl.html
-Version: 0.7.2
+Version: 0.7.3
 Description: Elegant, fully responsive, highly customizable Webcomic-ready theme named in honor of Rorschach from the Watchmen graphic novel.
 Tags: black, blue, brown, gray, green, orange, pink, purple, red, silver, tan, white, yellow, dark, light, one-column, two-columns, three-columns, four-columns, left-sidebar, right-sidebar, fixed-layout, fluid-layout, flexible-header, responsive-layout, accessibility-ready, blavatar, custom-background, custom-colors, custom-header, custom-menu, editor-style, featured-image-header, featured-images, full-width-template, microformats, post-formats, rtl-language-support, sticky-post, theme-options, threaded-comments, translation-ready
 Text Domain: inkblot
@@ -1316,6 +1316,67 @@ nav.pagination {
 .nav-links .next, .nav-links .prev {
   display:inline;
 }
+
+.inkblot-ace-arrow-container {
+  display:inline-block;
+  background:#ff4040;
+/*  font-size:72pt; */
+
+
+  padding-top:0.05in;
+  padding-bottom:0.05in;
+  margin-top:0.05in;
+  margin-bottom:0.05in;
+
+  padding-left:1in;
+  padding-right:1in;
+}
+
+.inkblot-ace-arrow-container:hover {
+  background:#b8b8b8;
+}
+
+
+.arrow-up {
+  display:inline-block;
+  width: 0; 
+  height: 0; 
+  border-left: 0.25in solid transparent;
+  border-right: 0.25in solid transparent;
+  
+  border-bottom: 0.25in solid black;
+}
+
+.arrow-down {
+  display:inline-block;
+  width: 0; 
+  height: 0; 
+  border-left: 0.125in solid transparent;
+  border-right: 0.125in solid transparent;
+  
+  border-top: 0.125in solid black;
+}
+
+.arrow-right {
+  display:inline-block;
+  width: 0; 
+  height: 0; 
+  border-top: 0.125in solid transparent;
+  border-bottom: 0.125in solid transparent;
+  
+  border-left: 0.125in solid black;
+}
+
+.arrow-left {
+  display:inline-block;
+  width: 0; 
+  height: 0; 
+  border-top: 0.125in solid transparent;
+  border-bottom: 0.125in solid transparent; 
+  
+  border-right:0.125in solid black; 
+}
+
 
 /*
  * Some limited responsive design.
