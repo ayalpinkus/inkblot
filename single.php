@@ -69,6 +69,7 @@ if (strpos( $_SERVER['HTTP_REFERER'], 'index.php' ) !== false) {
 
 //echo '<p>referer = ' . $_SERVER['HTTP_REFERER'] . '<p>';
 //echo '<p>referer = ' . $_GET['referer'] . '<p>';
+//echo '<p>request uri = ' . $_SERVER['REQUEST_URI'] . '<p>';
 //echo '<p>referer = ' . $referer . '<p>';
 
   if ($_GET['lastpost'] != "" && $referer != "") {

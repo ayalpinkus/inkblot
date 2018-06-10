@@ -34,7 +34,7 @@
 				// comments are closed, but the post has and supports comments
 			endif;
 			
-			comment_form();
+			comment_form( array( 'action' =>  home_url('/') . '/wp-comments-post.php' . inkblot_default_query_parameters(__FILE__,__LINE__) )  );
 		endif;
 		
 		print inkblot_widgetized('comment-footer');

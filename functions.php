@@ -496,3 +496,30 @@ function inkblot_list_all_content_child_categories() {
 }
 endif;
 
+
+
+
+
+
+add_filter( 'comment_post_redirect', 'inkblot_redirect_comments', 10,2 );
+function inkblot_redirect_comments( $location, $commentdata ) {
+
+  return wp_get_referer() . inkblot_default_query_parameters(__FILE__,__LINE__);
+/*
+  if(!isset($commentdata) || empty($commentdata->comment_post_ID) ){
+    return $location;
+  }
+  $post_id = $commentdata->comment_post_ID;
+  if('my-custom-post' == get_post_type($post_id)){
+    return wp_get_referer()."#comment-".$commentdata->comment_ID;
+  }
+  return $location;
+*/
+}
+
+
+
+
+
+
+
