@@ -542,8 +542,24 @@ function inkblot_default_query_parameters($file,$line) {
       $lastpost = get_post_field( 'post_name', $post );
     }
   } 
+  $referer = "";
+
+  if (array_key_exists ( 'referer' , $_GET )) {
+    $referer = urldecode($_GET['referer']);
+  }
+  if (!is_single()) {
+//    $referer = home_url('/');
+    // esc_url($_SERVER['HTTP_REFERER']);
+      $referer = esc_url($_SERVER['REQUEST_URI']);
+  }
+
+  $quste = strpos($referer,'?');
+  if ($quste != false) {
+    $referer = substr($referer,0,$quste);
+  }
+
   if ($lastpost != "") {
-    return '?lastpost=' . $lastpost ; //  . '&pos=' . $file . '_' . $line;
+    return '?lastpost=' . $lastpost . '&referer=' . $referer; //  . '&pos=' . $file . '_' . $line;
   }
   return "";
 }

@@ -34,7 +34,6 @@ if ($next_post != null) {
   }
 //}
 
-//echo '<p>referer = ' . $_SERVER['HTTP_REFERER'] . '<p>';
 
 
   echo '	<nav class="navigation pagination" role="navigation">';
@@ -53,6 +52,9 @@ if ($next_post != null) {
 //  echo '<div class="inkblot-ace-arrow-container"></div>' ;
 
 
+
+
+/*
 $refererislist = true;
 if (strpos( $_SERVER['HTTP_REFERER'], 'index.php' ) !== false) {
   if (strpos( $_SERVER['HTTP_REFERER'], '/category/' ) == false && 
@@ -60,10 +62,18 @@ if (strpos( $_SERVER['HTTP_REFERER'], 'index.php' ) !== false) {
     $refererislist = false;
   }
 }
+*/
 
-  if ($_GET['lastpost'] != "" && $refererislist) {
+//  $referer = $_GET['referer']; // $_SERVER['HTTP_REFERER']
+  $referer = $_GET['referer']; // $_SERVER['HTTP_REFERER']
 
-    echo '<a class="inkblot-ace-arrow-container" href="' . $_SERVER['HTTP_REFERER'] . '" rel="prev"><div class="inkblot-ace-arrow-button" >STORY MODE</div></a>';
+//echo '<p>referer = ' . $_SERVER['HTTP_REFERER'] . '<p>';
+//echo '<p>referer = ' . $_GET['referer'] . '<p>';
+//echo '<p>referer = ' . $referer . '<p>';
+
+  if ($_GET['lastpost'] != "" && $referer != "") {
+
+    echo '<a class="inkblot-ace-arrow-container" href="' . $referer  . inkblot_default_query_parameters(__FILE__,__LINE__) . '" rel="prev"><div class="inkblot-ace-arrow-button" >STORY MODE</div></a>';
 
   }
   else {
