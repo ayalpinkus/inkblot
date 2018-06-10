@@ -5,7 +5,7 @@ Author: Original work Michael Sisk, with modifications by Ayal Pinkus
 Author URI: http://mgsisk.com , https://www.ayalpinkus.nl/
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl.html
-Version: 0.7.6
+Version: 0.7.7
 Description: Elegant, fully responsive, highly customizable Webcomic-ready theme named in honor of Rorschach from the Watchmen graphic novel.
 Tags: black, blue, brown, gray, green, orange, pink, purple, red, silver, tan, white, yellow, dark, light, one-column, two-columns, three-columns, four-columns, left-sidebar, right-sidebar, fixed-layout, fluid-layout, flexible-header, responsive-layout, accessibility-ready, blavatar, custom-background, custom-colors, custom-header, custom-menu, editor-style, featured-image-header, featured-images, full-width-template, microformats, post-formats, rtl-language-support, sticky-post, theme-options, threaded-comments, translation-ready
 Text Domain: inkblot
@@ -1317,28 +1317,51 @@ nav.pagination {
   display:inline;
 }
 
-.inkblot-ace-arrow-container, .inkblot-ace-arrow-container-disabled {
+.navigation.pagination {
+/*  background:#ffff00; */
+}
+
+.inkblot-ace-arrow-container {
   display:inline-block;
+  width:33%;
+}
+
+a.inkblot-ace-arrow-container, a.inkblot-ace-arrow-container:hover {
+  color:black;
+}
+
+
+.inkblot-ace-arrow-button, .inkblot-ace-arrow-button-disabled {
+  display:inline-block;
+  width:100%;
 
   padding-top:0.05in;
   margin-top:0.05in;
+
+  font-size:0.25in;
+  font-weight:900;
+
 /*
   padding-bottom:0.05in;
   margin-bottom:0.05in;
 */
+/*
   padding-left:1in;
   padding-right:1in;
+*/
 }
 
-.inkblot-ace-arrow-container {
+.inkblot-ace-arrow-button {
   background:#ff4040;
+  width:100%;
 }
 
-.inkblot-ace-arrow-container-disabled {
+.inkblot-ace-arrow-button-disabled {
   background:#d0d0d0;
+  width:100%;
 }
 
-.inkblot-ace-arrow-container:hover {
+.inkblot-ace-arrow-button:hover {
   background:#ffa0a0;
 }
 
@@ -1423,5 +1446,12 @@ nav.pagination {
   body {
 //    font-size:2rem;
   }
+
+.inkblot-ace-arrow-container {
+  display:block;
+  width:100%;
+}
+
+
 }
 

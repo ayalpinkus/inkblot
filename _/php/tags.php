@@ -103,6 +103,7 @@ if ( ! function_exists('inkblot_posts_nav')) :
  * @param boolean $paged Whether to display paged navigation.
  * @return string
  */
+
 function inkblot_posts_nav($args = array(), $paged = false) {
 
 /* __('&laquo; Previous Page', 'inkblot')  &laquo; */
@@ -110,36 +111,97 @@ function inkblot_posts_nav($args = array(), $paged = false) {
 
 /*
 get_the_posts_pagination(array_merge(array(
-			'prev_text' => '<div class="inkblot-ace-arrow-container" ><div class="arrow-left"></div> <div class="arrow-left"></div></div>'  ,
-			'next_text' => '<div class="inkblot-ace-arrow-container" ><div class="arrow-right"></div> <div class="arrow-right"></div></div>'  ,
+			'prev_text' => '<div class="inkblot-ace-arrow-button" ><div class="arrow-left"></div> <div class="arrow-left"></div></div>'  ,
+			'next_text' => '<div class="inkblot-ace-arrow-button" ><div class="arrow-right"></div> <div class="arrow-right"></div></div>'  ,
 			'before_page_number' => sprintf('<span class="screen-reader-text">%s </span>', __('Page', 'inkblot'))
 		), (array) $args))
 */
 
-	$prevstr = get_previous_posts_link('<div class="inkblot-ace-arrow-container" ><div class="arrow-left"></div> <div class="arrow-left"></div></div>');
+	$prevstr = inkblot_get_previous_posts_link('<div class="inkblot-ace-arrow-button" ><div class="arrow-left"></div> <div class="arrow-left"></div></div>');
 
-	$nextstr = get_next_posts_link('<div class="inkblot-ace-arrow-container" ><div class="arrow-right"></div> <div class="arrow-right"></div></div>');
+	$nextstr = inkblot_get_next_posts_link('<div class="inkblot-ace-arrow-button" ><div class="arrow-right"></div> <div class="arrow-right"></div></div>');
 
 	if ($prevstr == "") {
-	  $prevstr = '<div class="inkblot-ace-arrow-container-disabled" ><div class="arrow-left"></div> <div class="arrow-left"></div></div>';
+	  $prevstr = '<div class="inkblot-ace-arrow-container">' . '<div class="inkblot-ace-arrow-button-disabled" ><div class="arrow-left"></div> <div class="arrow-left"></div></div>' . '</div>';
 	}
 	if ($nextstr == "") {
-	  $nextstr = '<div class="inkblot-ace-arrow-container-disabled" ><div class="arrow-right"></div> <div class="arrow-right"></div></div>';
+	  $nextstr = '<div class="inkblot-ace-arrow-container">' . '<div class="inkblot-ace-arrow-button-disabled" ><div class="arrow-right"></div> <div class="arrow-right"></div></div>' . '</div>';
 	}
 
-
+//@@@HIER
 //
+//'<a class="inkblot-ace-arrow-container" href="' . next_posts( 0, false ) . inkblot_default_query_parameters(__FILE__,__LINE__) . '" >' . '<div class="inkblot-ace-arrow-button" ><div class="arrow-right"></div> <div class="arrow-right"></div></div>' . '</a>'
 
+//'<div class="inkblot-ace-arrow-container">'
 
 	return $paged
 		? '<nav class="navigation pagination" role="navigation"><h2 class="screen-reader-text">Posts navigation</h2>' . 
-  $prevstr . $nextstr . 
+  $prevstr . 
+  '<div class="inkblot-ace-arrow-container"></div>' .
+  $nextstr . 
   '</nav>'
 		: get_the_posts_navigation(array_merge(array(
 			'prev_text' => __('&laquo; Previous Page', 'inkblot'),
 			'next_text' => __('Next Page &raquo;', 'inkblot')
 		), (array) $args));
 }
+
+
+
+
+
+
+function inkblot_get_next_posts_link( $label = null, $max_page = 0 ) {
+    global $paged, $wp_query;
+ 
+    if ( !$max_page )
+        $max_page = $wp_query->max_num_pages;
+ 
+    if ( !$paged )
+        $paged = 1;
+ 
+    $nextpage = intval($paged) + 1;
+ 
+    if ( null === $label )
+        $label = __( 'Next Page &raquo;' );
+ 
+    if ( !is_single() && ( $nextpage <= $max_page ) ) {
+        /**
+         * Filters the anchor tag attributes for the next posts page link.
+         *
+         * @since 2.7.0
+         *
+         * @param string $attributes Attributes for the anchor tag.
+         */
+        $attr = apply_filters( 'next_posts_link_attributes', '' );
+ 
+        return '<a class="inkblot-ace-arrow-container" href="' . next_posts( $max_page, false ) . "\" $attr>" . preg_replace('/&([^#])(?![a-z]{1,8};)/i', '&#038;$1', $label) . '</a>';
+    }
+}
+
+
+function inkblot_get_previous_posts_link( $label = null ) {
+    global $paged;
+ 
+    if ( null === $label )
+        $label = __( '&laquo; Previous Page' );
+ 
+    if ( !is_single() && $paged > 1 ) {
+        /**
+         * Filters the anchor tag attributes for the previous posts page link.
+         *
+         * @since 2.7.0
+         *
+         * @param string $attributes Attributes for the anchor tag.
+         */
+        $attr = apply_filters( 'previous_posts_link_attributes', '' );
+        return '<a class="inkblot-ace-arrow-container" href="' . previous_posts( false ) . "\" $attr>". preg_replace( '/&([^#])(?![a-z]{1,8};)/i', '&#038;$1', $label ) .'</a>';
+    }
+}
+
+
+
+
 endif;
 
 if ( ! function_exists('inkblot_post_datetime')) :

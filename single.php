@@ -34,23 +34,50 @@ if ($next_post != null) {
   }
 //}
 
+//echo '<p>referer = ' . $_SERVER['HTTP_REFERER'] . '<p>';
+
+
   echo '	<nav class="navigation pagination" role="navigation">';
   echo '		<h2 class="screen-reader-text">Post navigation</h2>';
 
   if ($prev_post != null) {
 
-    echo '<a href="' . get_permalink($prev_post->ID) . inkblot_default_query_parameters(__FILE__,__LINE__) . '" rel="prev"><div class="inkblot-ace-arrow-container" ><div class="arrow-left"></div> <div class="arrow-left"></div></div></a>';
+    echo '<a class="inkblot-ace-arrow-container" href="' . get_permalink($prev_post->ID) . inkblot_default_query_parameters(__FILE__,__LINE__) . '" rel="prev"><div class="inkblot-ace-arrow-button" ><div class="arrow-left"></div> <div class="arrow-left"></div></div></a>';
 
   }
   else {
-    echo '<div class="inkblot-ace-arrow-container-disabled" ><div class="arrow-left"></div> <div class="arrow-left"></div></div>';
+    echo '<div class="inkblot-ace-arrow-container">' . '<div class="inkblot-ace-arrow-button-disabled" ><div class="arrow-left"></div> <div class="arrow-left"></div></div>' . '</div>';
   }
+
+//  echo '<div class="inkblot-ace-arrow-container"></div>' ;
+//  echo '<div class="inkblot-ace-arrow-container"></div>' ;
+
+
+$refererislist = true;
+if (strpos( $_SERVER['HTTP_REFERER'], 'index.php' ) !== false) {
+  if (strpos( $_SERVER['HTTP_REFERER'], '/category/' ) == false && 
+      strpos( $_SERVER['HTTP_REFERER'], '/author/' ) == false) {
+    $refererislist = false;
+  }
+}
+
+  if ($_GET['lastpost'] != "" && $refererislist) {
+
+    echo '<a class="inkblot-ace-arrow-container" href="' . $_SERVER['HTTP_REFERER'] . '" rel="prev"><div class="inkblot-ace-arrow-button" >STORY MODE</div></a>';
+
+  }
+  else {
+    echo '<div class="inkblot-ace-arrow-container">' . '</div>';
+  }
+
+
+
 
   if ($next_post != null) {
-    echo '<a href="' . get_permalink($next_post->ID) . inkblot_default_query_parameters(__FILE__,__LINE__) . '" rel="next"><div class="inkblot-ace-arrow-container" ><div class="arrow-right"></div> <div class="arrow-right"></div></div></a>';
+    echo '<a class="inkblot-ace-arrow-container" href="' . get_permalink($next_post->ID) . inkblot_default_query_parameters(__FILE__,__LINE__) . '" rel="next"><div class="inkblot-ace-arrow-button" ><div class="arrow-right"></div> <div class="arrow-right"></div></div></a>';
   }
   else {
-    echo '<div class="inkblot-ace-arrow-container-disabled" ><div class="arrow-right"></div> <div class="arrow-right"></div></div>';
+    echo '<div class="inkblot-ace-arrow-container">' . '<div class="inkblot-ace-arrow-button-disabled" ><div class="arrow-right"></div> <div class="arrow-right"></div></div>' . '</div>';
   }
   echo '	</nav>';
 
