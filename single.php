@@ -78,7 +78,10 @@ if (strpos( $_SERVER['HTTP_REFERER'], 'index.php' ) !== false) {
 
   }
   else {
-    echo '<div class="inkblot-ace-arrow-container">' . '</div>';
+
+      echo '<a class="inkblot-ace-arrow-container" href="' . home_url('/')  . inkblot_default_query_parameters(__FILE__,__LINE__) . '" rel="prev"><div class="inkblot-ace-arrow-button" >HOME</div></a>';
+
+//    echo '<div class="inkblot-ace-arrow-container">' . '</div>';
   }
 
 
