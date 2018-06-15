@@ -12,8 +12,10 @@
 <!-- @@@TODO AYAL: do we need a skip to content?
 		<a href="#content<?php echo inkblot_default_query_parameters(__FILE__,__LINE__);?>"><?php _e('Skip to content', 'inkblot'); ?></a>
 --!>		
+
+<?php if (!is_single()) : /* do not show the banner in single-post mode. */ ?>
 		<?php print inkblot_widgetized('document-header'); ?>
-		
+
 		<div class="wrapper">
 			
 			<?php print inkblot_widgetized('page-header'); ?>
@@ -97,6 +99,9 @@
 				<?php endif; ?>
 				
 			</header><!-- .banner -->
+<?php endif; /* is_single() */ ?> 
+			
+			
 			<div id="content" class="content" tabindex="-1">
 				
 				<?php print inkblot_widgetized('content-header'); ?>

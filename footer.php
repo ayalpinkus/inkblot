@@ -31,6 +31,6 @@
 			
 			wp_footer();
 		?>
-		
+
 	</body><!-- #document -->
 </html>
