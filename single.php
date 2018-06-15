@@ -18,7 +18,8 @@ get_header(); ?>
 
 
 
-inkblot_insert_story_child_categories();
+//inkblot_insert_story_child_categories();
+
 
 $prev_post = get_previous_post();
 $next_post = get_next_post();
@@ -33,6 +34,7 @@ if ($next_post != null) {
     $next_post = null;
   }
 //}
+
 
 
 
@@ -120,7 +122,6 @@ if (strpos( $_SERVER['HTTP_REFERER'], 'index.php' ) !== false) {
 				'prev_text' => sprintf('<span class="screen-reader-text">%s </span>%%title', __('Previous post: ', 'inkblot'))
 			));
 */
-
 
 			
 			comments_template();

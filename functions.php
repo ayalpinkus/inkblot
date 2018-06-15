@@ -451,7 +451,7 @@ endif;
 
 if ( ! function_exists('inkblot_insert_story_child_categories')) :
 function inkblot_insert_story_child_categories() {
-  echo "<br>";
+//  echo "<br>";
 
   $allcats = wp_get_object_terms( get_the_ID(),  'category' );
   $nrcats=count($allcats);
@@ -470,7 +470,7 @@ function inkblot_insert_story_child_categories() {
   }
   echo '</span>';
 
-  echo "<br>";
+//  echo "<br>";
 }
 endif;
 

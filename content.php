@@ -62,6 +62,9 @@ if( current_user_can('administrator')) {
 					comments_popup_link();
 				endif;
 				edit_post_link(sprintf(__('Edit %1$s', 'inkblot'), '<span class="screen-reader-text">' . get_the_title() . '</span>'));
+
+inkblot_insert_story_child_categories();
+
 			?>
 
 <!--@@@TODO remove?
