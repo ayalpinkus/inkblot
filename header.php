@@ -13,7 +13,8 @@
 		<a href="#content<?php echo inkblot_default_query_parameters(__FILE__,__LINE__);?>"><?php _e('Skip to content', 'inkblot'); ?></a>
 --!>		
 
-<?php if (!is_single()) : /* do not show the banner in single-post mode. */ ?>
+
+
 		<?php print inkblot_widgetized('document-header'); ?>
 
 		<div class="wrapper">
@@ -21,9 +22,12 @@
 			<?php print inkblot_widgetized('page-header'); ?>
 			
 			<header role="banner" class="banner widgets columns-<?php print inkblot_count_widgets('site-header'); ?>">
-				
+
+			
 				<?php if ( ! dynamic_sidebar('site-header')) : ?>
-					
+
+<?php if (!is_single()) : /* do not show the banner in single-post mode. */ ?>
+
 					<a href="<?php print esc_url(home_url() . inkblot_default_query_parameters(__FILE__,__LINE__) ); ?>" rel="home">
 						<h1 class="site"><?php bloginfo('name'); ?></h1>
 						<p><?php bloginfo('description'); ?></p>
@@ -33,12 +37,13 @@
 							<?php the_post_thumbnail(array(get_theme_mod('header_width'), get_theme_mod('header_height'))); ?>
 							
 						<?php elseif ($header = get_custom_header() and $header->url) : ?>
-							
+							 
 							<img src="<?php header_image(); ?>" width="<?php print $header->width; ?>" height="<?php print $header->height; ?>" alt="<?php print esc_attr(get_bloginfo('name')); ?>">
 							
 						<?php endif; ?>
 						
 					</a>
+
 					
 					<nav role="navigation" aria-label="<?php _e('Primary Navigation', 'inkblot'); ?>">
 						
@@ -96,11 +101,12 @@
 						
 					</nav>
 					
+<?php  endif; /* is_single() */ ?> 
+
 				<?php endif; ?>
 				
 			</header><!-- .banner -->
-<?php endif; /* is_single() */ ?> 
-			
+
 			
 			<div id="content" class="content" tabindex="-1">
 				
