@@ -117,15 +117,15 @@ get_the_posts_pagination(array_merge(array(
 		), (array) $args))
 */
 
-	$prevstr = inkblot_get_previous_posts_link('<div class="inkblot-ace-arrow-button" ><div class="arrow-left"></div> <div class="arrow-left"></div></div>');
+	$prevstr = inkblot_get_previous_posts_link('<div class="inkblot-ace-arrow-button" ><div class="arrow-left"></div><div class="arrow-left"></div></div>');
 
-	$nextstr = inkblot_get_next_posts_link('<div class="inkblot-ace-arrow-button" ><div class="arrow-right"></div> <div class="arrow-right"></div></div>');
+	$nextstr = inkblot_get_next_posts_link('<div class="inkblot-ace-arrow-button" ><div class="arrow-right"></div><div class="arrow-right"></div></div>');
 
 	if ($prevstr == "") {
-	  $prevstr = '<div class="inkblot-ace-arrow-container">' . '<div class="inkblot-ace-arrow-button-disabled" ><div class="arrow-left"></div> <div class="arrow-left"></div></div>' . '</div>';
+	  $prevstr = '<a class="inkblot-ace-arrow-container">' . '<div class="inkblot-ace-arrow-button-disabled" ><div class="arrow-left"></div><div class="arrow-left"></div></div>' . '</a>';
 	}
 	if ($nextstr == "") {
-	  $nextstr = '<div class="inkblot-ace-arrow-container">' . '<div class="inkblot-ace-arrow-button-disabled" ><div class="arrow-right"></div> <div class="arrow-right"></div></div>' . '</div>';
+	  $nextstr = '<a class="inkblot-ace-arrow-container">' . '<div class="inkblot-ace-arrow-button-disabled" ><div class="arrow-right"></div><div class="arrow-right"></div></div>' . '</a>';
 	}
 
 //@@@HIER
@@ -137,7 +137,7 @@ get_the_posts_pagination(array_merge(array(
 	return $paged
 		? '<nav class="navigation pagination" role="navigation"><h2 class="screen-reader-text">Posts navigation</h2>' . 
   $prevstr . 
-  '<div class="inkblot-ace-arrow-container"></div>' .
+  '<a class="inkblot-ace-arrow-container" id="inkblot-dummy-mid-button" ><div class="inkblot-ace-arrow-button" id="storymode-regular"></div></a>' .
   $nextstr . 
   '</nav>'
 		: get_the_posts_navigation(array_merge(array(

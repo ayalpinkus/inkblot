@@ -43,11 +43,11 @@ if ($next_post != null) {
 
   if ($prev_post != null) {
 
-    echo '<a class="inkblot-ace-arrow-container" href="' . get_permalink($prev_post->ID) . inkblot_default_query_parameters(__FILE__,__LINE__) . '" rel="prev"><div class="inkblot-ace-arrow-button" ><div class="arrow-left"></div> <div class="arrow-left"></div></div></a>';
+    echo '<a class="inkblot-ace-arrow-container" href="' . get_permalink($prev_post->ID) . inkblot_default_query_parameters(__FILE__,__LINE__) . '" rel="prev"><div class="inkblot-ace-arrow-button" ><div class="arrow-left"></div><div class="arrow-left"></div></div></a>';
 
   }
   else {
-    echo '<div class="inkblot-ace-arrow-container">' . '<div class="inkblot-ace-arrow-button-disabled" ><div class="arrow-left"></div> <div class="arrow-left"></div></div>' . '</div>';
+    echo '<a class="inkblot-ace-arrow-container">' . '<div class="inkblot-ace-arrow-button-disabled" ><div class="arrow-left"></div><div class="arrow-left"></div></div>' . '</a>';
   }
 
 //  echo '<div class="inkblot-ace-arrow-container"></div>' ;
@@ -74,28 +74,40 @@ if (strpos( $_SERVER['HTTP_REFERER'], 'index.php' ) !== false) {
 //echo '<p>request uri = ' . $_SERVER['REQUEST_URI'] . '<p>';
 //echo '<p>referer = ' . $referer . '<p>';
 
-  if ($_GET['lastpost'] != "" && $referer != "") {
 
-    echo '<a class="inkblot-ace-arrow-container" href="' . $referer  . inkblot_default_query_parameters(__FILE__,__LINE__) . '" rel="prev"><div class="inkblot-ace-arrow-button" >STORY MODE</div></a>';
+  if ($_GET['lastpost'] != "" && $referer != "") {
+    echo '<a class="inkblot-ace-arrow-container" id="inkblot-mid-button" href="' . $referer  . inkblot_default_query_parameters(__FILE__,__LINE__) . '" rel="prev"><div class="inkblot-ace-arrow-button" id="storymode-regular">STORY MODE</div></a>';
 
   }
   else {
 
-      echo '<a class="inkblot-ace-arrow-container" href="' . home_url('/')  . inkblot_default_query_parameters(__FILE__,__LINE__) . '" rel="prev"><div class="inkblot-ace-arrow-button" >HOME</div></a>';
-
-//    echo '<div class="inkblot-ace-arrow-container">' . '</div>';
+      echo '<a class="inkblot-ace-arrow-container" id="inkblot-mid-button" href="' . home_url('/')  . inkblot_default_query_parameters(__FILE__,__LINE__) . '" rel="prev"><div class="inkblot-ace-arrow-button" id="storymode-regular" >HOME</div></a>';
   }
-
 
 
 
   if ($next_post != null) {
-    echo '<a class="inkblot-ace-arrow-container" href="' . get_permalink($next_post->ID) . inkblot_default_query_parameters(__FILE__,__LINE__) . '" rel="next"><div class="inkblot-ace-arrow-button" ><div class="arrow-right"></div> <div class="arrow-right"></div></div></a>';
+    echo '<a class="inkblot-ace-arrow-container" href="' . get_permalink($next_post->ID) . inkblot_default_query_parameters(__FILE__,__LINE__) . '" rel="next"><div class="inkblot-ace-arrow-button" ><div class="arrow-right"></div><div class="arrow-right"></div></div></a>';
   }
   else {
-    echo '<div class="inkblot-ace-arrow-container">' . '<div class="inkblot-ace-arrow-button-disabled" ><div class="arrow-right"></div> <div class="arrow-right"></div></div>' . '</div>';
+    echo '<a class="inkblot-ace-arrow-container">' . '<div class="inkblot-ace-arrow-button-disabled" ><div class="arrow-right"></div><div class="arrow-right"></div></div>' . '</a>';
   }
+
+
+
+  if ($_GET['lastpost'] != "" && $referer != "") {
+    echo '<a class="inkblot-ace-arrow-container" id="inkblot-below-button" href="' . $referer  . inkblot_default_query_parameters(__FILE__,__LINE__) . '" rel="prev"><div class="inkblot-ace-arrow-button" id="storymode-responsive" >STORY MODE</div></a>';
+
+  }
+  else {
+
+      echo '<a class="inkblot-ace-arrow-container" id="inkblot-below-button" href="' . home_url('/')  . inkblot_default_query_parameters(__FILE__,__LINE__) . '" rel="prev"><div class="inkblot-ace-arrow-button" id="storymode-responsive" >HOME</div></a>';
+  }
+
+
   echo '	</nav>';
+
+
 
 /*
   echo '	<nav class="navigation post-navigation" role="navigation">';
