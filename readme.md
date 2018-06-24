@@ -28,7 +28,10 @@ Create story posts under the 'story' category, and under the 'afterword' categor
 
 ---
 
-© 2008 - 2015 Michael Sisk (me@mgsisk.com)
+Inkblot © 2008 - 2015 Michael Sisk (me@mgsisk.com)
+
+Inkblot ACE © 2018 Ayal Pinkus (https://www.ayalpinkus.nl)
+
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
