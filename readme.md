@@ -9,13 +9,12 @@ Inkblot is an elegant, [fully responsive](https://en.wikipedia.org/wiki/Responsi
 
 ## Installation
 
-You can install Inkblot from the **Themes > Add New** page in the administrative dashboard. Just do a search for `inkblot` and the first result should be the one you're looking for.
+You can currently only install Inkblot ACE manually. 
 
-### Manual Installation
+1. Download and extract Inkblot from the [master GitHub repository](https://github.com/ayalpinkus/inkblot-ace) (for the most up-to-date release).
+2. Upload the `inkblot-ace` directory to your `wp-content/themes` directory.
+3. Activate Inkblot ACE through the **Appearance > Themes** page in the administrative dashboard.
 
-1. Download and extract Inkblot from the [WordPress.org theme directory](https://wordpress.org/themes/inkblot) (for the most recent stable release) or the [master GitHub repository](https://github.com/mgsisk/inkblot) (for the most up-to-date release).
-2. Upload the `inkblot` directory to your `wp-content/themes` directory.
-3. Activate Inkblot through the **Appearance > Themes** page in the administrative dashboard.
 
 
 ## How Inkblot ACE differs from Inkblot
