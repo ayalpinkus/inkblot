@@ -54,6 +54,9 @@ if ( $lastid < 0 && ! $renderall ){
 else
 {
   $canshow=true;
+
+  $postnav = array();
+
     
 /*@@@TODO remove?
   $lastid = 0;
@@ -94,9 +97,16 @@ else
 
       echo "</a>";
     }
+
+    if (!($renderall) && $post->ID >= $lastid) {
+      global $paged, $wp_query;
+      if ( !$paged ) $paged = 1;
+      $postnav['max_page'] = $paged;
+    }
+
   endwhile;
 		
-  print inkblot_posts_nav(false, get_theme_mod('paged_navigation', true));
+  print inkblot_posts_nav($postnav, get_theme_mod('paged_navigation', true));
 }
 
 else:

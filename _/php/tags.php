@@ -106,10 +106,17 @@ if ( ! function_exists('inkblot_posts_nav')) :
 
 function inkblot_posts_nav($args = array(), $paged = false) {
 
-/* __('&laquo; Previous Page', 'inkblot')  &laquo; */
-/* __('Next Page &raquo;', 'inkblot')  &raquo; */
 
-/*
+  $max_page = 0;
+  if (array_key_exists('max_page', $args)) {
+    $max_page = intval($args['max_page']);
+  }
+
+
+
+
+
+/*@@@TODO remove?
 get_the_posts_pagination(array_merge(array(
 			'prev_text' => '<div class="inkblot-ace-arrow-button" ><div class="arrow-left"></div> <div class="arrow-left"></div></div>'  ,
 			'next_text' => '<div class="inkblot-ace-arrow-button" ><div class="arrow-right"></div> <div class="arrow-right"></div></div>'  ,
@@ -119,7 +126,7 @@ get_the_posts_pagination(array_merge(array(
 
 	$prevstr = inkblot_get_previous_posts_link('<div class="inkblot-ace-arrow-button" ><div class="arrow-left"></div><div class="arrow-left"></div></div>');
 
-	$nextstr = inkblot_get_next_posts_link('<div class="inkblot-ace-arrow-button" ><div class="arrow-right"></div><div class="arrow-right"></div></div>');
+	$nextstr = inkblot_get_next_posts_link('<div class="inkblot-ace-arrow-button" ><div class="arrow-right"></div><div class="arrow-right"></div></div>', $max_page);
 
 	if ($prevstr == "") {
 	  $prevstr = '<a class="inkblot-ace-arrow-container">' . '<div class="inkblot-ace-arrow-button-disabled" ><div class="arrow-left"></div><div class="arrow-left"></div></div>' . '</a>';
@@ -128,11 +135,12 @@ get_the_posts_pagination(array_merge(array(
 	  $nextstr = '<a class="inkblot-ace-arrow-container">' . '<div class="inkblot-ace-arrow-button-disabled" ><div class="arrow-right"></div><div class="arrow-right"></div></div>' . '</a>';
 	}
 
-//@@@HIER
-//
-//'<a class="inkblot-ace-arrow-container" href="' . next_posts( 0, false ) . inkblot_default_query_parameters(__FILE__,__LINE__) . '" >' . '<div class="inkblot-ace-arrow-button" ><div class="arrow-right"></div> <div class="arrow-right"></div></div>' . '</a>'
 
+/*@@@TODO remove?
+//'<a class="inkblot-ace-arrow-container" href="' . next_posts( 0, false ) . inkblot_default_query_parameters(__FILE__,__LINE__) . '" >' . '<div class="inkblot-ace-arrow-button" ><div class="arrow-right"></div> <div class="arrow-right"></div></div>' . '</a>'
 //'<div class="inkblot-ace-arrow-container">'
+*/
+
 
 	return $paged
 		? '<nav class="navigation pagination" role="navigation"><h2 class="screen-reader-text">Posts navigation</h2>' . 

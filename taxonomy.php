@@ -12,6 +12,13 @@ get_header(); ?>
 
 <main role="main">
 
+<?php echo '<p style="font-size:60pt; font-weight:900;">You should not be able to see this!</p>'; ?>
+
+<?php /*TODO remove? AYAL. Default archive, not used for this theme
+
+@@@
+
+
 	<?php if (have_posts()) : ?>
 		
 		<header class="page-header">
@@ -36,6 +43,8 @@ get_header(); ?>
 			get_template_part('content', 'none');
 		endif;
 	?>
+
+*/ ?>
 
 </main>
 

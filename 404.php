@@ -9,8 +9,10 @@
 get_header(); ?>
 
 <main role="main">
+
+	<?php inkblot_welcome_to_archive(); ?>	
 	
-	<?php get_template_part('content', 'none'); ?>
+	<?php /*@@@TODO remove? get_template_part('content', 'none'); */ ?>
 	
 </main>
 
