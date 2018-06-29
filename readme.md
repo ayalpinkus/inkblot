@@ -11,7 +11,7 @@ Inkblot is an elegant, [fully responsive](https://en.wikipedia.org/wiki/Responsi
 
 You can currently only install Inkblot ACE manually. 
 
-1. Download and extract Inkblot from the [master GitHub repository](https://github.com/ayalpinkus/inkblot-ace) (for the most up-to-date release).
+1. Download and extract Inkblot from the [master GitHub repository](https://github.com/ayalpinkus/inkblot-ace) by ckicking on the green 'Clone or Download' button. 
 2. Upload the `inkblot-ace` directory to your `wp-content/themes` directory.
 3. Activate Inkblot ACE through the **Appearance > Themes** page in the administrative dashboard.
 
