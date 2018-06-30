@@ -4,8 +4,6 @@
  *
  * @package Inkblot
  * @see https://codex.wordpress.org/Function_Reference/get_search_form
- */
-?>
 
 <form action="<?php print esc_url(home_url('/') . inkblot_default_query_parameters(__FILE__,__LINE__) ); ?>" role="search" class="search">
 	<p>
@@ -16,3 +14,9 @@
 		<button type="submit"><?php _e('Search', 'inkblot'); ?></button>
 	</p>
 </form><!-- .search -->
+ */
+?>
+
+
+	<?php inkblot_welcome_to_archive(); ?>	
+
