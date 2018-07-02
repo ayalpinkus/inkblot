@@ -66,16 +66,17 @@ if (strpos( $_SERVER['HTTP_REFERER'], 'index.php' ) !== false) {
 }
 */
 
-//  $referer = $_GET['referer']; // $_SERVER['HTTP_REFERER']
-  $referer = $_GET['referer']; // $_SERVER['HTTP_REFERER']
+
+  $referer = inkblot_referer(); 
+
 
 //echo '<p>referer = ' . $_SERVER['HTTP_REFERER'] . '<p>';
 //echo '<p>referer = ' . $_GET['referer'] . '<p>';
 //echo '<p>request uri = ' . $_SERVER['REQUEST_URI'] . '<p>';
 //echo '<p>referer = ' . $referer . '<p>';
 
-
-  if ($_GET['lastpost'] != "" && $referer != "") {
+  $lastpost = inkblot_lastpost();
+  if ($lastpost != "" && $referer != "") {
     echo '<a class="inkblot-ace-arrow-container" id="inkblot-mid-button" href="' . $referer  . inkblot_default_query_parameters(__FILE__,__LINE__) . '" rel="prev"><div class="inkblot-ace-arrow-button" id="storymode-regular">STORY MODE</div></a>';
 
   }
@@ -94,8 +95,9 @@ if (strpos( $_SERVER['HTTP_REFERER'], 'index.php' ) !== false) {
   }
 
 
+  $lastpost = inkblot_lastpost();
 
-  if ($_GET['lastpost'] != "" && $referer != "") {
+  if ($lastpost != "" && $referer != "") {
     echo '<a class="inkblot-ace-arrow-container" id="inkblot-below-button" href="' . $referer  . inkblot_default_query_parameters(__FILE__,__LINE__) . '" rel="prev"><div class="inkblot-ace-arrow-button" id="storymode-responsive" >STORY MODE</div></a>';
 
   }

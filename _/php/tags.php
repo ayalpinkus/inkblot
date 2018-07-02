@@ -550,11 +550,15 @@ function inkblot_default_query_parameters($file,$line) {
       $lastpost = get_post_field( 'post_name', $post );
     }
   } 
-  $referer = "";
 
+/*@@@TODO remove?  
   if (array_key_exists ( 'referer' , $_GET )) {
     $referer = urldecode($_GET['referer']);
   }
+*/
+
+  $referer = inkblot_referer();
+
   if (is_home() || is_category() || is_author()) {
 //    $referer = home_url('/');
     // esc_url($_SERVER['HTTP_REFERER']);

@@ -407,16 +407,42 @@ endif;
 
 
 
+
+
+if ( ! function_exists('inkblot_referer')) :
+function inkblot_referer() {
+  $referer = '';
+  if (array_key_exists ( 'referer' , $_GET )) {
+    $referer = urldecode( $_GET['referer'] ); 
+    $referer = str_replace('<', '', $referer);
+    $referer = str_replace('>', '', $referer);
+    if (strlen($referer) > 0) {
+      if ($referer[0] != '/') {
+	$referer='';
+      }
+    }
+  }
+  return $referer;
+}
+endif;
+
+
+
+
+
+
+
 if ( ! function_exists('inkblot_lastpost')) :
 function inkblot_lastpost() {
   $lastpost = "";
   if (array_key_exists ( 'lastpost' , $_GET )) {
     $lastpost = $_GET['lastpost'];
+    $lastpost = str_replace('<', '', $lastpost);
+    $lastpost = str_replace('>', '', $lastpost);
   }
   return $lastpost;
 }
 endif;
-
 
 if ( ! function_exists('inkblot_lastpost_id')) :
 function inkblot_lastpost_id() {

@@ -27,7 +27,8 @@
 /*@@@TODO remove?
 if( current_user_can('administrator')) {
 
-  if ($_GET['lastpost'] == "") {
+  $lastpost = inkblot_lastpost();
+  if ($lastpost == "") {
     $post = get_post();
     echo '<script type="text/javascript">';
     echo 'var stateObj = { foo: "bar" };';
