@@ -552,7 +552,7 @@ remove_action( 'wp_head', 'feed_links_extra', 3 );
 remove_action( 'wp_head', 'feed_links', 2 );
 
 function wpb_disable_feed() {
-wp_die( __('No feed available because this is an archive you should only be able to access if you have the right link. Please visit our <a href="'. get_bloginfo('url') .'">homepage</a> for more information.') );
+wp_die( __('No feed available. Because this is intended to be used as a mailing list archive, you should only be able to access posts if you have the right link. Please visit our <a href="'. get_bloginfo('url') .'">homepage</a> for more information.') );
 }
  
 add_action('do_feed', 'wpb_disable_feed', 1);
