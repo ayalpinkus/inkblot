@@ -551,7 +551,7 @@ function inkblot_redirect_comments( $location, $commentdata ) {
 
 
 function wpb_disable_feed() {
-wp_die( __('No feed available,please visit our <a href="'. get_bloginfo('url') .'">homepage</a>!') );
+wp_die( __('No feed available because this is an archive you should only be able to access if you have the right link. Please visit our <a href="'. get_bloginfo('url') .'">homepage</a> for more information.') );
 }
  
 add_action('do_feed', 'wpb_disable_feed', 1);
