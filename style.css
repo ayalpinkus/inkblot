@@ -5,7 +5,7 @@ Author: Original work Michael Sisk, with modifications by Ayal Pinkus
 Author URI: http://mgsisk.com , https://www.ayalpinkus.nl/
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl.html
-Version: 0.8.13
+Version: 0.8.14
 Description: Elegant, fully responsive, highly customizable Webcomic-ready theme named in honor of Rorschach from the Watchmen graphic novel.
 Tags: black, blue, brown, gray, green, orange, pink, purple, red, silver, tan, white, yellow, dark, light, one-column, two-columns, three-columns, four-columns, left-sidebar, right-sidebar, fixed-layout, fluid-layout, flexible-header, responsive-layout, accessibility-ready, blavatar, custom-background, custom-colors, custom-header, custom-menu, editor-style, featured-image-header, featured-images, full-width-template, microformats, post-formats, rtl-language-support, sticky-post, theme-options, threaded-comments, translation-ready
 Text Domain: inkblot
@@ -942,7 +942,7 @@ form.search input {
   float: right;
   margin: 0 0 1rem 1rem; }
   .post-image img {
-    border-radius: .3rem; }
+    /*BRAD_REMOVE border-radius: .3rem; */ }
 .post-header h1,
 .post-header h2 {
   margin: 0;
@@ -997,7 +997,7 @@ form.search input {
 .post-content {
   word-wrap: break-word; }
   .post-content img {
-    border-radius: .3rem;
+    /*BRAD_REMOVE border-radius: .3rem; */
     max-width: 100%; }
 .post-footer {
 //  border-bottom: thin solid #767676;
@@ -1039,7 +1039,7 @@ form.search input {
   text-align: center; }
   .attachment .post-image img,
   .webcomic-prints .post-image img {
-    border-radius: .3rem; }
+    /*BRAD_REMOVE border-radius: .3rem; */ }
 .attachment .post-excerpt,
 .webcomic-prints .post-excerpt {
   font-size: smaller;
@@ -1115,11 +1115,11 @@ nav.pagination {
   float: left;
   margin: 0 1rem 1rem 0; }
   .page-image img {
-    border-radius: .3rem; }
+    /*BRAD_REMOVE border-radius: .3rem; */ }
 .page-content {
   word-wrap: break-word; }
   .page-content img {
-    border-radius: .3rem; }
+    /*BRAD_REMOVE border-radius: .3rem; */ }
 .page-template-templatefull-width-php main {
   -moz-order: 1;
   -ms-order: 1;
@@ -1145,7 +1145,7 @@ nav.pagination {
     float: left;
     margin: 0 1rem 1rem 0; }
     .contributor-image img {
-      border-radius: .3rem; }
+      /*BRAD_REMOVE border-radius: .3rem; */ }
 
 .comment, .pingback,
 .trackback {
@@ -1249,7 +1249,7 @@ nav.pagination {
   padding: .3rem;
   text-align: center; }
   .wp-caption img {
-    border-radius: .3rem; }
+    /*BRAD_REMOVE border-radius: .3rem; */ }
   .wp-caption-text {
     font-size: smaller;
     margin: .5rem 0 0; }
@@ -1291,7 +1291,7 @@ nav.pagination {
   .gallery-icon {
     line-height: 1; }
     .gallery-icon img {
-      border-radius: .3rem;
+      /*BRAD_REMOVE border-radius: .3rem; */
       transition: opacity .2s; }
     .gallery-icon a:focus img,
     .gallery-icon a:hover img {
