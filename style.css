@@ -5,7 +5,7 @@ Author: Original work Michael Sisk, with modifications by Ayal Pinkus
 Author URI: http://mgsisk.com , https://www.ayalpinkus.nl/
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl.html
-Version: 0.8.12
+Version: 0.8.13
 Description: Elegant, fully responsive, highly customizable Webcomic-ready theme named in honor of Rorschach from the Watchmen graphic novel.
 Tags: black, blue, brown, gray, green, orange, pink, purple, red, silver, tan, white, yellow, dark, light, one-column, two-columns, three-columns, four-columns, left-sidebar, right-sidebar, fixed-layout, fluid-layout, flexible-header, responsive-layout, accessibility-ready, blavatar, custom-background, custom-colors, custom-header, custom-menu, editor-style, featured-image-header, featured-images, full-width-template, microformats, post-formats, rtl-language-support, sticky-post, theme-options, threaded-comments, translation-ready
 Text Domain: inkblot
@@ -949,7 +949,7 @@ form.search input {
   word-wrap: break-word; }
 .post-header h2 a:before {
   font: 100%/1 awesome;
-  padding: 0 .5rem 0 0;
+  padding: 0 0 0 0;
   vertical-align: baseline; }
   .format-audio .post-header h2 a:before {
     content: '\f025'; }
@@ -1231,16 +1231,16 @@ nav.pagination {
   border: thin solid #767676; }
 
 .alignnone {
-  margin: 1rem 0; }
+  margin: 0 0; }
 .aligncenter {
   display: block;
-  margin: 0 auto 1rem; }
+  margin: 0 auto 0; }
 .alignright {
   float: right;
-  margin: 0 0 1rem 1rem; }
+  margin: 0 0 0 0; }
 .alignleft {
   float: left;
-  margin: 0 1rem 1rem 0; }
+  margin: 0 0 0 0; }
 
 .wp-audio-shortcode {
   margin: 1rem 0; }

@@ -565,3 +565,11 @@ add_action('do_feed_rss2_comments', 'wpb_disable_feed', 1);
 add_action('do_feed_atom_comments', 'wpb_disable_feed', 1);
 
 
+
+/*
+ * Remove the p tags around the post so that they can match seamlessly 
+ */
+
+remove_filter( 'the_content', 'wpautop' );
+
+
